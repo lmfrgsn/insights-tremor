@@ -17,7 +17,7 @@ function App() {
       <Header />
 
       <div className="container mx-auto px-4">
-        <TabGroup>
+        <TabGroup index={1}>
           <TabList className="mt-8">
             <Tab>Overview</Tab>
             <Tab>Compare</Tab>
