@@ -284,99 +284,123 @@ export const blocks = [
 export const blocksViewsDay = [
     {
         hour: "00:00",
-        Views: 0,
+        "This Period": 0,
+        "Previous Period": 0,
     },
     {
         hour: "01:00",
-        Views: 0,
+        "This Period": 0,
+        "Previous Period": 0,
     },
     {
         hour: "02:00",
-        Views: 0,
+        "This Period": 0,
+        "Previous Period": 0,
     },
     {
         hour: "03:00",
-        Views: 0,
+        "This Period": 0,
+        "Previous Period": 0,
     },
     {
         hour: "04:00",
-        Views: 0,
+        "This Period": 0,
+        "Previous Period": 0,
     },
     {
         hour: "05:00",
-        Views: 0,
+        "This Period": 0,
+        "Previous Period": 0,
     },
     {
         hour: "06:00",
-        Views: 0,
+        "This Period": 0,
+        "Previous Period": 0,
     },
     {
         hour: "07:00",
-        Views: getRandomNumber(1, 6),
+        "This Period": getRandomNumber(1, 6),
+        "Previous Period": getRandomNumber(1, 6),
     },
     {
         hour: "08:00",
-        Views: getRandomNumber(1, 7),
+        "This Period": getRandomNumber(1, 6),
+        "Previous Period": getRandomNumber(1, 7),
     },
     {
         hour: "09:00",
-        Views: getRandomNumber(1, 8),
+        "This Period": getRandomNumber(1, 8),
+        "Previous Period": getRandomNumber(1, 9),
     },
     {
         hour: "10:00",
-        Views: getRandomNumber(1, 35),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "11:00",
-        Views: getRandomNumber(1, 35),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "12:00",
-        Views: getRandomNumber(1, 35),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "13:00",
-        Views: getRandomNumber(1, 35),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "14:00",
-        Views: getRandomNumber(1, 35),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "15:00",
-        Views: getRandomNumber(1, 35),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "16:00",
-        Views: getRandomNumber(1, 35),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "17:00",
-        Views: getRandomNumber(1, 35),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "18:00",
-        Views: getRandomNumber(1, 25),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "19:00",
-        Views: getRandomNumber(1, 20),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "20:00",
-        Views: getRandomNumber(1, 10),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "21:00",
-        Views: getRandomNumber(1, 8),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "22:00",
-        Views: getRandomNumber(1, 7),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         hour: "23:00",
-        Views: getRandomNumber(1, 5),
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
 ];
 

@@ -14,7 +14,7 @@ import { totalsWeekHour, totalsWeekDay, totalsWeekWeek } from "../data/totalsWee
 import { totalsMonthHour, totalsMonthDay, totalsMonthWeek, totalsMonthMonth } from "../data/totalsMonth";
 import { totalsQuarterHour, totalsQuarterDay, totalsQuarterWeek, totalsQuarterMonth, totalsQuarterQuarter } from "../data/totalsQuarter";
 import { totalsYearDay, totalsYearWeek, totalsYearMonth, totalsYearQuarter, totalsYearYear } from "../data/totalsYear";
-import { blocks, blocksViewsDay } from "../data/blocks";
+import { blocks, blocksViewsDay, blocksViewsWeek } from "../data/blocks";
 
 
 // import { blocks, blocksViewsDay } from "../data/blocks";
@@ -1001,10 +1001,10 @@ export default function Overview() {
                             <BadgeDelta deltaType={item.deltaType}>{item.delta}</BadgeDelta>
                             <AreaChart
                                 className="h-7 opacity-30 hover:opacity-100"
-                                data={totalsWeekDay}
+                                data={blocksViewsDay}
                                 index={"day"}
-                                categories={["Views"]}
-                                colors={['slate']}
+                                categories={["This Period", "Previous Period"]}
+                                colors={['violet', 'amber']}
                                 // startEndOnly={true}
                                 showLegend={false}
                                 showXAxis={false}
