@@ -429,14 +429,14 @@ export default function Overview() {
                         color="rose"
                     >
 
-                        <DateRangePickerItem key="today" value="today" from={new Date()} to={new Date()} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
+                        {/* <DateRangePickerItem key="today" value="today" from={new Date()} to={new Date()} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
                             Today
-                        </DateRangePickerItem>
+                        </DateRangePickerItem> */}
                         <DateRangePickerItem key="yesterday" value="yesterday" from={new Date(yyyy, mm - 1, dd - 1)} to={new Date(yyyy, mm - 1, dd)} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
-                            Yesterday
+                            Yesterday (11/10/23)
                         </DateRangePickerItem>
                         <DateRangePickerItem key="7days" value="7days" from={new Date(yyyy, mm - 1, dd - 7)} onClick={() => handleDateInput2(totalsWeekDay, 'day')}>
-                            Last 7 Days
+                            Previous 7 Days (27/09/23 - 04/10/23)
                         </DateRangePickerItem>
                         <DateRangePickerItem
                             key="mtd"
@@ -445,7 +445,7 @@ export default function Overview() {
                             to={new Date(yyyy, mm - 1, dd)}
                             onClick={() => handleDateInput2(totalsMonthWeek, 'week')}
                         >
-                            Month to Date
+                            Last Month (September)
                         </DateRangePickerItem>
                         <DateRangePickerItem
                             key="half"
@@ -454,10 +454,10 @@ export default function Overview() {
                             to={new Date(2023, 6, 31)}
                             onClick={() => handleDateInput2(totalsQuarterMonth, 'month')}
                         >
-                            This Quarter
+                            Last Quarter (Q2)
                         </DateRangePickerItem>
                         <DateRangePickerItem key="ytd" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearMonth, 'month')}>
-                            Year to date
+                            Last Year (2022)
                         </DateRangePickerItem>
                     </DateRangePicker>
 
