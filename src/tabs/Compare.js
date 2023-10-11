@@ -50,6 +50,11 @@ export default function Overview() {
         from: new Date(2023, 1, 1),
         to: new Date(),
     });
+    
+    const [value2, setValue2] = useState({
+        from: new Date(2023, 1, 1),
+        to: new Date(),
+    });
 
     const today = new Date();
     let dd = today.getDate();
@@ -418,19 +423,19 @@ export default function Overview() {
 
                     <DateRangePicker
                         className="max-w-md mx-auto"
-                        value={value}
-                        onValueChange={setValue}
+                        value={value2}
+                        onValueChange={setValue2}
                         selectPlaceholder="Select"
                         color="rose"
                     >
 
-                        <DateRangePickerItem key="today" value="today" from={new Date()} to={new Date()}>
+                        <DateRangePickerItem key="today" value="today" from={new Date()} to={new Date()} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
                             Today
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="yesterday" value="yesterday" from={new Date(yyyy, mm - 1, dd - 1)} to={new Date(yyyy, mm - 1, dd - 1)}>
+                        <DateRangePickerItem key="yesterday" value="yesterday" from={new Date(yyyy, mm - 1, dd - 1)} to={new Date(yyyy, mm - 1, dd)} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
                             Yesterday
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="7days" value="7days" from={new Date(yyyy, mm - 1, dd - 7)}>
+                        <DateRangePickerItem key="7days" value="7days" from={new Date(yyyy, mm - 1, dd - 7)} onClick={() => handleDateInput2(totalsWeekDay, 'day')}>
                             Last 7 Days
                         </DateRangePickerItem>
                         <DateRangePickerItem
@@ -438,18 +443,20 @@ export default function Overview() {
                             value="mtd"
                             from={new Date(yyyy, mm - 1, 1)}
                             to={new Date(yyyy, mm - 1, dd)}
+                            onClick={() => handleDateInput2(totalsMonthWeek, 'week')}
                         >
                             Month to Date
                         </DateRangePickerItem>
                         <DateRangePickerItem
                             key="half"
                             value="half"
-                            from={new Date(2023, 0, 1)}
-                            to={new Date(2023, 5, 31)}
+                            from={new Date(2023, 3, 1)}
+                            to={new Date(2023, 6, 31)}
+                            onClick={() => handleDateInput2(totalsQuarterMonth, 'month')}
                         >
-                            Last 6 months
+                            This Quarter
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="ytd" value="ytd" from={new Date(2023, 0, 1)}>
+                        <DateRangePickerItem key="ytd" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearMonth, 'month')}>
                             Year to date
                         </DateRangePickerItem>
                     </DateRangePicker>
