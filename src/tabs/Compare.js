@@ -75,11 +75,6 @@ export default function Overview() {
         to: new Date(),
     });
 
-    const [value2, setValue2] = useState({
-        from: new Date(2023, 1, 1),
-        to: new Date(),
-    });
-
     const today = new Date();
     let dd = today.getDate();
 
@@ -442,8 +437,8 @@ export default function Overview() {
 
                     <DateRangePicker
                         className="max-w-md mx-auto"
-                        value={value2}
-                        onValueChange={setValue2}
+                        value={value}
+                        onValueChange={setValue}
                         selectPlaceholder="Select"
                         color="rose"
                     >
