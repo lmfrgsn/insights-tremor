@@ -407,31 +407,38 @@ export const blocksViewsDay = [
 export const blocksViewsWeek = [
     {
         day: "Sat",
-        Views: 32,
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         day: "Sun",
-        Views: 12,
+        "This Period": getRandomNumber(1, 35),
+        "Previous Period": getRandomNumber(1, 35)
     },
     {
         day: "Mon",
-        Views: 54,
+        "This Period": getRandomNumber(1, 80),
+        "Previous Period": getRandomNumber(1, 75)
     },
     {
         day: "Tue",
-        Views: 43,
+        "This Period": getRandomNumber(1, 80),
+        "Previous Period": getRandomNumber(1, 75)
     },
     {
         day: "Wed",
-        Views: 62,
+        "This Period": getRandomNumber(1, 100),
+        "Previous Period": getRandomNumber(1, 95)
     },
     {
         day: "Thur",
-        Views: 84,
+        "This Period": getRandomNumber(1, 80),
+        "Previous Period": getRandomNumber(1, 75)
     },
     {
         day: "Fri",
-        Views: 59,
+        "This Period": getRandomNumber(1, 80),
+        "Previous Period": getRandomNumber(1, 75)
     },
 ];
 

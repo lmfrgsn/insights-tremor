@@ -22,6 +22,8 @@ import { blocks, blocksViewsDay, blocksViewsWeek } from "../data/blocks";
 
 export default function Overview() {
 
+    const [isModal, setIsModal] = useState(false);
+
     const [week] = useState(false);
     const [showLikes, setShowLikes] = useState(false);
     const [showComments, setShowComments] = useState(false);
@@ -50,7 +52,7 @@ export default function Overview() {
         from: new Date(2023, 1, 1),
         to: new Date(),
     });
-    
+
     const [value2, setValue2] = useState({
         from: new Date(2023, 1, 1),
         to: new Date(),
@@ -174,6 +176,10 @@ export default function Overview() {
             setDisplayTotals1Label('This Year');
         }
     };
+
+    // useEffect(() => {
+    //     handleDateInput(totalsDayHour, 'hour')
+    // });
 
     // ↓↓ THIS IS ALL DUPLICATE STUFF FOR COMPARE DEMO PURPOSES !!
 
@@ -986,9 +992,9 @@ export default function Overview() {
 
             </Grid> */}
 
-            <Grid numItemsSm={2} numItemsLg={4} className="gap-6 mt-6">
+            <Grid numItemsSm={2} numItemsLg={4} className="gap-6 mt-6 cursor-pointer">
                 {blocks.map((item) => (
-                    <Card key={item.title}>
+                    <Card key={item.title} onClick={() => setIsModal(!isModal)}>
                         <Flex alignItems="start">
                             <Text className="mb-2">{item.title}</Text>
                         </Flex>
@@ -1002,7 +1008,7 @@ export default function Overview() {
                             <AreaChart
                                 className="h-7 opacity-30 hover:opacity-100"
                                 data={blocksViewsDay}
-                                index={"day"}
+                                index={"hour"}
                                 categories={["This Period", "Previous Period"]}
                                 colors={['lime', 'indigo']}
                                 // startEndOnly={true}
@@ -1012,11 +1018,68 @@ export default function Overview() {
                                 showGridLines={false}
                                 curveType="natural"
                                 showAnimation={true}
+                                showTooltip={false}
                             />
                         </Flex>
                     </Card>
                 ))}
             </Grid>
+
+            {isModal ? <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={() => setIsModal(!isModal)}></div>
+
+                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8">
+                            <div className="bg-white p-6">
+                                <div className="sm:flex sm:items-start">
+                                    <div className="mt-3 text-center sm:mt-0 sm:text-left">
+                                        <Text className="mb-2">Likes</Text>
+                                        <Flex className="space-x-3 truncate mb-4" justifyContent="start" alignItems="baseline">
+                                            {/* <Icon icon={item.icon} variant="light" size="xs" color="neutral" tooltip="Up 20" /> */}
+                                            <span class="tremor-Icon-root inline-flex flex-shrink-0 items-center bg-neutral-100 text-neutral-500 rounded-tremor-default px-1.5 py-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.08404 2.57991C5.84727 2.26299 6.66554 2.09985 7.49195 2.09985C8.31836 2.09985 9.13663 2.26299 9.89986 2.57991C10.6631 2.89682 11.3562 3.36129 11.9396 3.94666L11.9428 3.94994L12.0001 4.00793L12.0573 3.94994L12.0606 3.94666C12.6439 3.36129 13.3371 2.89682 14.1003 2.57991C14.8635 2.26299 15.6818 2.09985 16.5082 2.09985C17.3346 2.09985 18.1529 2.26299 18.9161 2.57991C19.6791 2.89671 20.372 3.36097 20.9552 3.94606C23.4521 6.44364 23.5077 10.5732 20.549 13.5874L20.5426 13.5938L12.6938 21.4426C12.5098 21.6266 12.2603 21.73 12.0001 21.73C11.7399 21.73 11.4903 21.6266 11.3063 21.4426L3.45115 13.5874C0.492464 10.5733 0.548014 6.44363 3.04493 3.94605C3.62814 3.36096 4.32108 2.89671 5.08404 2.57991Z" fill="#D12E3C"></path></svg></span>
+                                            <Metric>9734</Metric>
+                                            <Text>vs. <Bold>2734</Bold></Text>
+                                        </Flex>
+                                        <div className="mt-2">
+                                            <Grid numItemsMd={1} numItemsLg={1} className="gap-6 mt-6">
+                                                <Card className='flex flex-col justify-between' style={{ width: 960 }}>
+                                                    <Flex className="flex-col align-start items-start">
+                                                        <Title className="mb-4 grow"><Bold className="break-normal">{displayTotals1Label} vs {displayTotals2Label}</Bold></Title>
+                                                        <div class="flex align-end full">
+                                                            <Select className="ml-2 max-w-100">
+                                                                <SelectItem key="1" value="1" className={!displayTotals1ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
+                                                                <SelectItem key="2" value="2" className={!displayTotals1ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
+                                                                <SelectItem key="3" value="3" className={!displayTotals1ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
+                                                                <SelectItem key="4" value="4" className={!displayTotals1ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
+                                                                <SelectItem key="5" value="5" className={!displayTotals1ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
+                                                                <SelectItem key="6" value="6" className={!displayTotals1ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
+                                                            </Select>
+                                                        </div>
+                                                    </Flex>
+                                                    <AreaChart
+                                                        className=" mt-4"
+                                                        data={blocksViewsDay}
+                                                        index={"hour"}
+                                                        categories={["This Period", "Previous Period"]}
+                                                        colors={["indigo", "emerald", "rose", "amber", "violet", "red", "pink"]}
+                                                        startEndOnly={false}
+                                                        showLegend={true}
+                                                        curveType={"monotone"}
+                                                        showAnimation={true}
+                                                        onValueChange={() => { console.log('test') }}
+                                                    />
+                                                </Card>
+                                            </Grid>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p onClick={() => setIsModal(!isModal)}>close</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> : null}
         </>
     );
 }
