@@ -40,6 +40,28 @@ export default function Overview() {
     const [displayTotals1ToggleYear, setDisplayTotals1ToggleYear] = useState('totalsDayYear');
     const [displayTotals1Label, setDisplayTotals1Label] = useState('Today');
 
+
+    /// DUPE
+
+    const [showLikes2, setShowLikes2] = useState(false);
+    const [showComments2, setShowComments2] = useState(false);
+    const [showUGC2, setShowUGC2] = useState(false);
+    const [showTotalViews2, setShowTotalViews2] = useState(false);
+
+    const [displayTotals2, setDisplayTotals2] = useState(totalsDayHour);
+    const [displayTotals2Index, setDisplayTotals2Index] = useState('hour');
+    const [displayTotals2ToggleHour, setDisplayTotals2ToggleHour] = useState('totalsDayHour2');
+    const [displayTotals2ToggleDay, setDisplayTotals2ToggleDay] = useState('totalsDayDay2');
+    const [displayTotals2ToggleWeek, setDisplayTotals2ToggleWeek] = useState('totalsDayWeek2');
+    const [displayTotals2ToggleMonth, setDisplayTotals2ToggleMonth] = useState('totalsDayMonth2');
+    const [displayTotals2ToggleQuarter, setDisplayTotals2ToggleQuarter] = useState('totalsDayQuarter2');
+    const [displayTotals2ToggleYear, setDisplayTotals2ToggleYear] = useState('totalsDayYear2');
+    const [displayTotals2Label, setDisplayTotals2Label] = useState('Yesterday');
+
+    const [data2, setData2] = useState(["Views"]);
+
+    // DUPE END
+
     // totalsQuarterWeek
 
     // let showCategories = useState(["Views"]);
@@ -174,6 +196,14 @@ export default function Overview() {
             setDisplayTotals1ToggleQuarter(totalsYearQuarter);
             setDisplayTotals1ToggleYear(totalsYearYear);
             setDisplayTotals1Label('This Year');
+        } else {
+            setDisplayTotals1ToggleHour(false);
+            setDisplayTotals1ToggleDay(false);
+            setDisplayTotals1ToggleWeek(false);
+            setDisplayTotals1ToggleMonth(false);
+            setDisplayTotals1ToggleQuarter(false);
+            setDisplayTotals1ToggleYear(false);
+            setDisplayTotals1Label('NADA');
         }
     };
 
@@ -182,23 +212,6 @@ export default function Overview() {
     // });
 
     // ↓↓ THIS IS ALL DUPLICATE STUFF FOR COMPARE DEMO PURPOSES !!
-
-    const [showLikes2, setShowLikes2] = useState(false);
-    const [showComments2, setShowComments2] = useState(false);
-    const [showUGC2, setShowUGC2] = useState(false);
-    const [showTotalViews2, setShowTotalViews2] = useState(false);
-
-    const [displayTotals2, setDisplayTotals2] = useState(totalsDayHour);
-    const [displayTotals2Index, setDisplayTotals2Index] = useState('hour');
-    const [displayTotals2ToggleHour, setDisplayTotals2ToggleHour] = useState('totalsDayHour2');
-    const [displayTotals2ToggleDay, setDisplayTotals2ToggleDay] = useState('totalsDayDay2');
-    const [displayTotals2ToggleWeek, setDisplayTotals2ToggleWeek] = useState('totalsDayWeek2');
-    const [displayTotals2ToggleMonth, setDisplayTotals2ToggleMonth] = useState('totalsDayMonth2');
-    const [displayTotals2ToggleQuarter, setDisplayTotals2ToggleQuarter] = useState('totalsDayQuarter2');
-    const [displayTotals2ToggleYear, setDisplayTotals2ToggleYear] = useState('totalsDayYear2');
-    const [displayTotals2Label, setDisplayTotals2Label] = useState('Yesterday');
-
-    const [data2, setData2] = useState(["Views"]);
 
     function handleShowLikes2() {
 
@@ -477,18 +490,18 @@ export default function Overview() {
                         <Title className="mb-4 grow"><Bold className="break-normal">{displayTotals1Label}</Bold></Title>
                         <div class="flex align-end full">
                             <MultiSelect placeholder="Include..." className="max-w-100">
-                                <MultiSelectItem value="w5u4u1" onClick={() => setShowLikes(!showLikes)}>Likes</MultiSelectItem>
-                                <MultiSelectItem value="5u45w2" onClick={() => setShowComments(!showComments)}>Comments</MultiSelectItem>
-                                <MultiSelectItem value="wu5t4h3" onClick={() => setShowUGC(!showUGC)}>UGC Posts</MultiSelectItem>
-                                <MultiSelectItem value="vsdv4" onClick={() => setShowTotalViews(!showTotalViews)}>Total Views</MultiSelectItem>
+                                <MultiSelectItem value="1" onClick={() => setShowLikes(!showLikes)}>Likes</MultiSelectItem>
+                                <MultiSelectItem value="2" onClick={() => setShowComments(!showComments)}>Comments</MultiSelectItem>
+                                <MultiSelectItem value="3" onClick={() => setShowUGC(!showUGC)}>UGC Posts</MultiSelectItem>
+                                <MultiSelectItem value="4" onClick={() => setShowTotalViews(!showTotalViews)}>Total Views</MultiSelectItem>
                             </MultiSelect>
-                            <Select className="ml-2 max-w-100">
-                                <SelectItem key="1" value="5y54y1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')} className={!displayTotals1ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
-                                <SelectItem key="2" value="y45y452" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')} className={!displayTotals1ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
-                                <SelectItem key="3" value="54u3" onClick={() => handleDateInput(displayTotals1ToggleWeek, 'week')} className={!displayTotals1ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
-                                <SelectItem key="4" value="u54u4" onClick={() => handleDateInput(displayTotals1ToggleMonth, 'month')} className={!displayTotals1ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
-                                <SelectItem key="5" value="35yu55" onClick={() => handleDateInput(displayTotals1ToggleQuarter, 'quarter')} className={!displayTotals1ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
-                                <SelectItem key="6" value="3uw36" onClick={() => handleDateInput(displayTotals1ToggleYear, 'year')} className={!displayTotals1ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
+                            <Select className="ml-2 max-w-100" value="3">
+                                {displayTotals1ToggleHour ? <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')}>Hourly</SelectItem> : null}
+                                {displayTotals1ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')}>Daily</SelectItem> : null}
+                                {displayTotals1ToggleWeek ? <SelectItem key="3" value="3" onClick={() => handleDateInput(displayTotals1ToggleWeek, 'week')}>Weekly</SelectItem> : null}
+                                {displayTotals1ToggleMonth ? <SelectItem key="4" value="4" onClick={() => handleDateInput(displayTotals1ToggleMonth, 'month')}>Monthly</SelectItem> : null}
+                                {displayTotals1ToggleQuarter ? <SelectItem key="5" value="5" onClick={() => handleDateInput(displayTotals1ToggleQuarter, 'quarter')}>Quarterly</SelectItem> : null}
+                                {displayTotals1ToggleYear ? <SelectItem key="6" value="6" onClick={() => handleDateInput(displayTotals1ToggleYear, 'year')}>Yearly</SelectItem> : null}
 
                                 {/* {displayTotals1ToggleHour ? <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')}>Hourly</SelectItem> : ''}
                                 {displayTotals1ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')}>Daily</SelectItem> : ''}
@@ -526,12 +539,12 @@ export default function Overview() {
                                 <MultiSelectItem value="4" onClick={() => setShowTotalViews2(!showTotalViews2)}>Total Views</MultiSelectItem>
                             </MultiSelect>
                             <Select className="ml-2 max-w-100">
-                                {displayTotals2ToggleHour ? <SelectItem key="adfsad1" value="1" onClick={() => handleDateInput2(displayTotals2ToggleHour, 'hour')}>Hourly</SelectItem> : null}
-                                {displayTotals2ToggleDay ? <SelectItem key="asfasf2" value="2" onClick={() => handleDateInput2(displayTotals2ToggleDay, 'day')}>Daily</SelectItem> : null}
-                                {displayTotals2ToggleWeek ? <SelectItem key="gdsg3" value="3" onClick={() => handleDateInput2(displayTotals2ToggleWeek, 'week')}>Weekly</SelectItem> : null}
-                                {displayTotals2ToggleMonth ? <SelectItem key="dgsgsd4" value="4" onClick={() => handleDateInput2(displayTotals2ToggleMonth, 'month')}>Monthly</SelectItem> : null}
-                                {displayTotals2ToggleQuarter ? <SelectItem key="sdgsdg5" value="5" onClick={() => handleDateInput2(displayTotals2ToggleQuarter, 'quarter')}>Quarterly</SelectItem> : null}
-                                {displayTotals2ToggleYear ? <SelectItem key="dsgsdg6" value="6" onClick={() => handleDateInput2(displayTotals2ToggleYear, 'year')}>Yearly</SelectItem> : null}
+                                {displayTotals2ToggleHour ? <SelectItem key="1" value="1" onClick={() => handleDateInput2(displayTotals2ToggleHour, 'hour')}>Hourly</SelectItem> : null}
+                                {displayTotals2ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput2(displayTotals2ToggleDay, 'day')}>Daily</SelectItem> : null}
+                                {displayTotals2ToggleWeek ? <SelectItem key="3" value="3" onClick={() => handleDateInput2(displayTotals2ToggleWeek, 'week')}>Weekly</SelectItem> : null}
+                                {displayTotals2ToggleMonth ? <SelectItem key="4" value="4" onClick={() => handleDateInput2(displayTotals2ToggleMonth, 'month')}>Monthly</SelectItem> : null}
+                                {displayTotals2ToggleQuarter ? <SelectItem key="5" value="5" onClick={() => handleDateInput2(displayTotals2ToggleQuarter, 'quarter')}>Quarterly</SelectItem> : null}
+                                {displayTotals2ToggleYear ? <SelectItem key="6" value="6" onClick={() => handleDateInput2(displayTotals2ToggleYear, 'year')}>Yearly</SelectItem> : null}
 
                                 {/* {displayTotals1ToggleHour ? <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')}>Hourly</SelectItem> : ''}
                                 {displayTotals1ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')}>Daily</SelectItem> : ''}
@@ -1027,7 +1040,6 @@ export default function Overview() {
 
             {isModal ? <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={() => setIsModal(!isModal)}></div>
-
                 <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
                     <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                         <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8">
@@ -1079,7 +1091,7 @@ export default function Overview() {
                                                         </div>
                                                     </Flex>
                                                     <AreaChart
-                                                        className="mt-4"
+                                                        className=" mt-4"
                                                         data={blocksViewsDay}
                                                         index={"hour"}
                                                         categories={["This Period", "Previous Period"]}
