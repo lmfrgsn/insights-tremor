@@ -130,7 +130,7 @@ export default function Overview() {
         setDisplayTotals1($date);
         setDisplayTotals1Index($index);
 
-        handleDateInput2($date, $index);
+        // handleDateInput2($date, $index);
 
         if ($date == totalsDayHour) {
             setDisplayTotals1ToggleHour(totalsDayHour);
@@ -1004,7 +1004,7 @@ export default function Overview() {
                                 data={blocksViewsDay}
                                 index={"day"}
                                 categories={["This Period", "Previous Period"]}
-                                colors={['violet', 'amber']}
+                                colors={['lime', 'indigo']}
                                 // startEndOnly={true}
                                 showLegend={false}
                                 showXAxis={false}
