@@ -438,14 +438,14 @@ export default function Overview() {
                         {/* <DateRangePickerItem key="today" value="today" from={new Date()} to={new Date()} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
                             Today
                         </DateRangePickerItem> */}
-                        <DateRangePickerItem key="yesterday" value="yesterday" from={new Date(yyyy, mm - 1, dd - 1)} to={new Date(yyyy, mm - 1, dd)} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
+                        <DateRangePickerItem key="yesterday2" value="yesterday" from={new Date(yyyy, mm - 1, dd - 1)} to={new Date(yyyy, mm - 1, dd)} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
                             Yesterday (11/10/23)
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="7days" value="7days" from={new Date(yyyy, mm - 1, dd - 7)} onClick={() => handleDateInput2(totalsWeekDay, 'day')}>
+                        <DateRangePickerItem key="7days2" value="7days" from={new Date(yyyy, mm - 1, dd - 7)} onClick={() => handleDateInput2(totalsWeekDay, 'day')}>
                             Previous 7 Days (27/09/23 - 04/10/23)
                         </DateRangePickerItem>
                         <DateRangePickerItem
-                            key="mtd"
+                            key="mtd2"
                             value="mtd"
                             from={new Date(yyyy, mm - 1, 1)}
                             to={new Date(yyyy, mm - 1, dd)}
@@ -454,7 +454,7 @@ export default function Overview() {
                             Last Month (September)
                         </DateRangePickerItem>
                         <DateRangePickerItem
-                            key="half"
+                            key="half2"
                             value="half"
                             from={new Date(2023, 3, 1)}
                             to={new Date(2023, 6, 31)}
@@ -462,7 +462,7 @@ export default function Overview() {
                         >
                             Last Quarter (Q2)
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="ytd" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearMonth, 'month')}>
+                        <DateRangePickerItem key="ytd2" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearMonth, 'month')}>
                             Last Year (2022)
                         </DateRangePickerItem>
                     </DateRangePicker>
@@ -477,18 +477,18 @@ export default function Overview() {
                         <Title className="mb-4 grow"><Bold className="break-normal">{displayTotals1Label}</Bold></Title>
                         <div class="flex align-end full">
                             <MultiSelect placeholder="Include..." className="max-w-100">
-                                <MultiSelectItem value="1" onClick={() => setShowLikes(!showLikes)}>Likes</MultiSelectItem>
-                                <MultiSelectItem value="2" onClick={() => setShowComments(!showComments)}>Comments</MultiSelectItem>
-                                <MultiSelectItem value="3" onClick={() => setShowUGC(!showUGC)}>UGC Posts</MultiSelectItem>
-                                <MultiSelectItem value="4" onClick={() => setShowTotalViews(!showTotalViews)}>Total Views</MultiSelectItem>
+                                <MultiSelectItem value="w5u4u1" onClick={() => setShowLikes(!showLikes)}>Likes</MultiSelectItem>
+                                <MultiSelectItem value="5u45w2" onClick={() => setShowComments(!showComments)}>Comments</MultiSelectItem>
+                                <MultiSelectItem value="wu5t4h3" onClick={() => setShowUGC(!showUGC)}>UGC Posts</MultiSelectItem>
+                                <MultiSelectItem value="vsdv4" onClick={() => setShowTotalViews(!showTotalViews)}>Total Views</MultiSelectItem>
                             </MultiSelect>
                             <Select className="ml-2 max-w-100">
-                                <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')} className={!displayTotals1ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
-                                <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')} className={!displayTotals1ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
-                                <SelectItem key="3" value="3" onClick={() => handleDateInput(displayTotals1ToggleWeek, 'week')} className={!displayTotals1ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
-                                <SelectItem key="4" value="4" onClick={() => handleDateInput(displayTotals1ToggleMonth, 'month')} className={!displayTotals1ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
-                                <SelectItem key="5" value="5" onClick={() => handleDateInput(displayTotals1ToggleQuarter, 'quarter')} className={!displayTotals1ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
-                                <SelectItem key="6" value="6" onClick={() => handleDateInput(displayTotals1ToggleYear, 'year')} className={!displayTotals1ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
+                                <SelectItem key="1" value="5y54y1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')} className={!displayTotals1ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
+                                <SelectItem key="2" value="y45y452" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')} className={!displayTotals1ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
+                                <SelectItem key="3" value="54u3" onClick={() => handleDateInput(displayTotals1ToggleWeek, 'week')} className={!displayTotals1ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
+                                <SelectItem key="4" value="u54u4" onClick={() => handleDateInput(displayTotals1ToggleMonth, 'month')} className={!displayTotals1ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
+                                <SelectItem key="5" value="35yu55" onClick={() => handleDateInput(displayTotals1ToggleQuarter, 'quarter')} className={!displayTotals1ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
+                                <SelectItem key="6" value="3uw36" onClick={() => handleDateInput(displayTotals1ToggleYear, 'year')} className={!displayTotals1ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
 
                                 {/* {displayTotals1ToggleHour ? <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')}>Hourly</SelectItem> : ''}
                                 {displayTotals1ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')}>Daily</SelectItem> : ''}
@@ -526,12 +526,12 @@ export default function Overview() {
                                 <MultiSelectItem value="4" onClick={() => setShowTotalViews2(!showTotalViews2)}>Total Views</MultiSelectItem>
                             </MultiSelect>
                             <Select className="ml-2 max-w-100">
-                                <SelectItem key="1" value="1" onClick={() => handleDateInput2(displayTotals2ToggleHour, 'hour')} className={!displayTotals2ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
-                                <SelectItem key="2" value="2" onClick={() => handleDateInput2(displayTotals2ToggleDay, 'day')} className={!displayTotals2ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
-                                <SelectItem key="3" value="3" onClick={() => handleDateInput2(displayTotals2ToggleWeek, 'week')} className={!displayTotals2ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
-                                <SelectItem key="4" value="4" onClick={() => handleDateInput2(displayTotals2ToggleMonth, 'month')} className={!displayTotals2ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
-                                <SelectItem key="5" value="5" onClick={() => handleDateInput2(displayTotals2ToggleQuarter, 'quarter')} className={!displayTotals2ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
-                                <SelectItem key="6" value="6" onClick={() => handleDateInput2(displayTotals2ToggleYear, 'year')} className={!displayTotals2ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
+                                {displayTotals2ToggleHour ? <SelectItem key="adfsad1" value="1" onClick={() => handleDateInput2(displayTotals2ToggleHour, 'hour')}>Hourly</SelectItem> : null}
+                                {displayTotals2ToggleDay ? <SelectItem key="asfasf2" value="2" onClick={() => handleDateInput2(displayTotals2ToggleDay, 'day')}>Daily</SelectItem> : null}
+                                {displayTotals2ToggleWeek ? <SelectItem key="gdsg3" value="3" onClick={() => handleDateInput2(displayTotals2ToggleWeek, 'week')}>Weekly</SelectItem> : null}
+                                {displayTotals2ToggleMonth ? <SelectItem key="dgsgsd4" value="4" onClick={() => handleDateInput2(displayTotals2ToggleMonth, 'month')}>Monthly</SelectItem> : null}
+                                {displayTotals2ToggleQuarter ? <SelectItem key="sdgsdg5" value="5" onClick={() => handleDateInput2(displayTotals2ToggleQuarter, 'quarter')}>Quarterly</SelectItem> : null}
+                                {displayTotals2ToggleYear ? <SelectItem key="dsgsdg6" value="6" onClick={() => handleDateInput2(displayTotals2ToggleYear, 'year')}>Yearly</SelectItem> : null}
 
                                 {/* {displayTotals1ToggleHour ? <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')}>Hourly</SelectItem> : ''}
                                 {displayTotals1ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')}>Daily</SelectItem> : ''}
@@ -1033,8 +1033,29 @@ export default function Overview() {
                         <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8">
                             <div className="bg-white p-6">
                                 <div className="sm:flex sm:items-start">
-                                    <div className="mt-3 text-center sm:mt-0 sm:text-left">
-                                        <Text className="mb-2">Likes</Text>
+                                    <div className="text-center sm:mt-0 sm:text-left">
+                                        <div className="flex flex-shrink-0 items-center justify-between rounded-t-md mb-4">
+                                            <Title>Likes</Title>
+                                            <button
+                                                type="button"
+                                                className="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                                                data-te-modal-dismiss
+                                                aria-label="Close"
+                                                onClick={() => setIsModal(!isModal)}>
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke-width="1.5"
+                                                    stroke="currentColor"
+                                                    class="h-6 w-6">
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
                                         <Flex className="space-x-3 truncate mb-4" justifyContent="start" alignItems="baseline">
                                             {/* <Icon icon={item.icon} variant="light" size="xs" color="neutral" tooltip="Up 20" /> */}
                                             <span class="tremor-Icon-root inline-flex flex-shrink-0 items-center bg-neutral-100 text-neutral-500 rounded-tremor-default px-1.5 py-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.08404 2.57991C5.84727 2.26299 6.66554 2.09985 7.49195 2.09985C8.31836 2.09985 9.13663 2.26299 9.89986 2.57991C10.6631 2.89682 11.3562 3.36129 11.9396 3.94666L11.9428 3.94994L12.0001 4.00793L12.0573 3.94994L12.0606 3.94666C12.6439 3.36129 13.3371 2.89682 14.1003 2.57991C14.8635 2.26299 15.6818 2.09985 16.5082 2.09985C17.3346 2.09985 18.1529 2.26299 18.9161 2.57991C19.6791 2.89671 20.372 3.36097 20.9552 3.94606C23.4521 6.44364 23.5077 10.5732 20.549 13.5874L20.5426 13.5938L12.6938 21.4426C12.5098 21.6266 12.2603 21.73 12.0001 21.73C11.7399 21.73 11.4903 21.6266 11.3063 21.4426L3.45115 13.5874C0.492464 10.5733 0.548014 6.44363 3.04493 3.94605C3.62814 3.36096 4.32108 2.89671 5.08404 2.57991Z" fill="#D12E3C"></path></svg></span>
@@ -1058,7 +1079,7 @@ export default function Overview() {
                                                         </div>
                                                     </Flex>
                                                     <AreaChart
-                                                        className=" mt-4"
+                                                        className="mt-4"
                                                         data={blocksViewsDay}
                                                         index={"hour"}
                                                         categories={["This Period", "Previous Period"]}
@@ -1074,7 +1095,6 @@ export default function Overview() {
                                         </div>
                                     </div>
                                 </div>
-                                <p onClick={() => setIsModal(!isModal)}>close</p>
                             </div>
                         </div>
                     </div>
