@@ -344,7 +344,7 @@ export default function Overview() {
 
             </Grid>
 
-            <div class="bg-green-100 border-2 border-green-400 p-4 rounded">
+            {/* <div class="bg-green-100 border-2 border-green-400 p-4 rounded">
                 <p class="mb-2 font-bold text-center">Test Zone</p>
                 <div class="flex">
                     <div className="flex-1 text-center">
@@ -362,7 +362,7 @@ export default function Overview() {
                         <p onClick={() => handleDateInput2(totalsYearMonth, 'month')}>Year View</p>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <Grid numItemsMd={2} numItemsLg={3} className="gap-6 mt-4 border-b pb-4">
 
