@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import {
-    Card, Text, Metric, AreaChart, Grid, Flex, Bold, SelectItem, Select, DateRangePicker, DateRangePickerItem, Icon, MultiSelect, MultiSelectItem, BadgeDelta, LineChart, Title, BarChart
+    Card, Text, Metric, AreaChart, Grid, Flex, Bold, SelectItem, Select, DateRangePicker, DateRangePickerItem, Icon, MultiSelect, MultiSelectItem, BadgeDelta, LineChart, Title, BarChart, TabGroup, TabList, Tab
 } from "@tremor/react";
+import { BarChart4Icon, LineChartIcon } from 'lucide-react';
 // import { Dialog, Transition } from "@headlessui/react";
 // import { ExpandIcon, SearchIcon } from 'lucide-react';
 // import { popularContentDay } from "../data/popularContent";
@@ -21,6 +22,9 @@ import { blocks, blocksViewsDay, blocksViewsWeek } from "../data/blocks";
 // import { compareViewsDay, compareViewsWeek } from "../data/compare";
 
 export default function Overview() {
+
+    const [selectedChart1, setSelectedChart1] = useState(0);
+    const [selectedChart2, setSelectedChart2] = useState(0);
 
     const [isModal, setIsModal] = useState(false);
 
@@ -398,6 +402,7 @@ export default function Overview() {
                         className="max-w-md mx-auto"
                         value={value}
                         onValueChange={setValue}
+                        defaultValue="today"
                         selectPlaceholder="Select"
                         color="rose"
                     >
@@ -488,7 +493,15 @@ export default function Overview() {
             <Grid numItemsMd={1} numItemsLg={2} className="gap-6 mt-6">
                 <Card className='flex flex-col justify-between'>
                     <Flex className="flex-col align-start items-start">
-                        <Title className="mb-4 grow"><Bold className="break-normal">{displayTotals1Label}</Bold></Title>
+                        <Flex className="space-x-8 mb-2" justifyContent="between" alignItems="center">
+                            <Title><Bold className="break-normal">{displayTotals1Label}</Bold></Title>
+                            <TabGroup index={selectedChart1} onIndexChange={setSelectedChart1} className="flex justify-end">
+                                <TabList variant="solid">
+                                    <Tab icon={BarChart4Icon}>Bar</Tab>
+                                    <Tab icon={LineChartIcon}>Line</Tab>
+                                </TabList>
+                            </TabGroup>
+                        </Flex>
                         <div className="flex align-end full">
                             <MultiSelect placeholder="Include..." className="max-w-100">
                                 <MultiSelectItem value="1" onClick={() => setShowLikes(!showLikes)}>Likes</MultiSelectItem>
@@ -497,7 +510,6 @@ export default function Overview() {
                                 <MultiSelectItem value="4" onClick={() => setShowTotalViews(!showTotalViews)}>Total Views</MultiSelectItem>
                             </MultiSelect>
                             <Select className="ml-2 max-w-100">
-
                                 <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')} className={!displayTotals1ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
                                 <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')} className={!displayTotals1ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
                                 <SelectItem key="3" value="3" onClick={() => handleDateInput(displayTotals1ToggleWeek, 'week')} className={!displayTotals1ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
@@ -517,22 +529,45 @@ export default function Overview() {
                     {/* <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
                         <Metric>{week ? 1568 : 369}</Metric>
                     </Flex> */}
-                    <BarChart
-                        className=" mt-4"
-                        data={displayTotals1}
-                        index={displayTotals1Index}
-                        categories={data}
-                        colors={["indigo", "emerald", "rose", "amber", "violet", "red", "pink"]}
-                        startEndOnly={false}
-                        showLegend={true}
-                        // curveType={"linear"}
-                        showAnimation={true}
-                        onValueChange={() => { console.log('test') }}
-                    />
+                    {selectedChart1 === 0 ? (
+                        <BarChart
+                            className=" mt-4"
+                            data={displayTotals1}
+                            index={displayTotals1Index}
+                            categories={data}
+                            colors={["indigo", "emerald", "rose", "amber", "violet", "red", "pink"]}
+                            startEndOnly={false}
+                            showLegend={true}
+                            // curveType={"linear"}
+                            showAnimation={true}
+                            onValueChange={() => { console.log('test') }}
+                        />) : (
+                        <>
+                            <LineChart
+                                className=" mt-4"
+                                data={displayTotals1}
+                                index={displayTotals1Index}
+                                categories={data}
+                                colors={["indigo", "emerald", "rose", "amber", "violet", "red", "pink"]}
+                                startEndOnly={false}
+                                showLegend={true}
+                                // curveType={"linear"}
+                                showAnimation={true}
+                                onValueChange={() => { console.log('test') }}
+                            />
+                        </>)}
                 </Card>
                 <Card className='flex flex-col justify-between'>
                     <Flex className="flex-col align-start items-start">
-                        <Title className="mb-4 grow"><Bold className="break-normal">{displayTotals2Label}</Bold></Title>
+                        <Flex className="space-x-8 mb-2" justifyContent="between" alignItems="center">
+                            <Title><Bold className="break-normal">{displayTotals2Label}</Bold></Title>
+                            <TabGroup index={selectedChart2} onIndexChange={setSelectedChart2} className="flex justify-end">
+                                <TabList variant="solid">
+                                    <Tab icon={BarChart4Icon}>Bar</Tab>
+                                    <Tab icon={LineChartIcon}>Line</Tab>
+                                </TabList>
+                            </TabGroup>
+                        </Flex>
                         <div className="flex align-end full">
                             <MultiSelect placeholder="Include..." className="max-w-100">
                                 <MultiSelectItem value="1" onClick={() => setShowLikes2(!showLikes2)}>Likes</MultiSelectItem>
@@ -561,18 +596,33 @@ export default function Overview() {
                     {/* <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
                         <Metric>{week ? 1568 : 369}</Metric>
                     </Flex> */}
-                    <BarChart
-                        className=" mt-4"
-                        data={displayTotals2}
-                        index={displayTotals2Index}
-                        categories={data2}
-                        colors={["indigo", "emerald", "rose", "amber", "violet", "red", "pink"]}
-                        startEndOnly={false}
-                        showLegend={true}
-                        // curveType={"linear"}
-                        showAnimation={true}
-                        onValueChange={() => { console.log('test') }}
-                    />
+                    {selectedChart2 === 0 ? (
+                        <BarChart
+                            className=" mt-4"
+                            data={displayTotals2}
+                            index={displayTotals2Index}
+                            categories={data2}
+                            colors={["indigo", "emerald", "rose", "amber", "violet", "red", "pink"]}
+                            startEndOnly={false}
+                            showLegend={true}
+                            // curveType={"linear"}
+                            showAnimation={true}
+                            onValueChange={() => { console.log('test') }}
+                        />) : (
+                        <>
+                            <LineChart
+                                className=" mt-4"
+                                data={displayTotals2}
+                                index={displayTotals2Index}
+                                categories={data2}
+                                colors={["indigo", "emerald", "rose", "amber", "violet", "red", "pink"]}
+                                startEndOnly={false}
+                                showLegend={true}
+                                // curveType={"linear"}
+                                showAnimation={true}
+                                onValueChange={() => { console.log('test') }}
+                            />
+                        </>)}
                 </Card>
 
                 {/* <Card className='flex flex-col justify-between'>
@@ -1081,17 +1131,113 @@ export default function Overview() {
                                             <Grid numItemsMd={1} numItemsLg={1} className="gap-6 mt-6">
                                                 <Card className='flex flex-col justify-between' style={{ width: 960 }}>
                                                     <Flex className="flex-col align-start items-start">
-                                                        <Title className="mb-4 grow"><Bold className="break-normal">{displayTotals1Label} vs {displayTotals2Label}</Bold></Title>
-                                                        <div className="flex align-end full">
-                                                            <Select className="ml-2 max-w-100">
-                                                                <SelectItem key="1" value="1" className={!displayTotals1ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
-                                                                <SelectItem key="2" value="2" className={!displayTotals1ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
-                                                                <SelectItem key="3" value="3" className={!displayTotals1ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
-                                                                <SelectItem key="4" value="4" className={!displayTotals1ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
-                                                                <SelectItem key="5" value="5" className={!displayTotals1ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
-                                                                <SelectItem key="6" value="6" className={!displayTotals1ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
-                                                            </Select>
-                                                        </div>
+
+                                                        <Flex className="flex-row items-center items-start mb-4">
+                                                            <Title className="grow"><Bold className="break-normal">{displayTotals1Label} vs {displayTotals2Label}</Bold></Title>
+                                                            <div className="flex align-end full">
+                                                                <Select className="ml-2 max-w-100">
+                                                                    <SelectItem key="1" value="1" className={!displayTotals1ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
+                                                                    <SelectItem key="2" value="2" className={!displayTotals1ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
+                                                                    <SelectItem key="3" value="3" className={!displayTotals1ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
+                                                                    <SelectItem key="4" value="4" className={!displayTotals1ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
+                                                                    <SelectItem key="5" value="5" className={!displayTotals1ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
+                                                                    <SelectItem key="6" value="6" className={!displayTotals1ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
+                                                                </Select>
+                                                            </div>
+                                                        </Flex>
+
+                                                        <Grid numItemsMd={2} numItemsLg={2} className="gap-6 pb-4">
+
+                                                            <div className='flex items-center'>
+                                                                <Text className='mr-2 flex-none'>Show Insights for</Text>
+
+                                                                <DateRangePicker
+                                                                    className="max-w-md mx-auto"
+                                                                    value={value}
+                                                                    onValueChange={setValue}
+                                                                    selectPlaceholder="Select"
+                                                                    color="rose"
+                                                                >
+
+                                                                    <DateRangePickerItem key="today" value="today" from={new Date()} to={new Date()} onClick={() => handleDateInput(totalsDayHour, 'hour')}>
+                                                                        Today
+                                                                    </DateRangePickerItem>
+                                                                    <DateRangePickerItem key="yesterday" value="yesterday" from={new Date(yyyy, mm - 1, dd - 1)} to={new Date(yyyy, mm - 1, dd)} onClick={() => handleDateInput(totalsDayHour, 'hour')}>
+                                                                        Yesterday
+                                                                    </DateRangePickerItem>
+                                                                    <DateRangePickerItem key="7days" value="7days" from={new Date(yyyy, mm - 1, dd - 7)} onClick={() => handleDateInput(totalsWeekDay, 'day')}>
+                                                                        Last 7 Days
+                                                                    </DateRangePickerItem>
+                                                                    <DateRangePickerItem
+                                                                        key="mtd"
+                                                                        value="mtd"
+                                                                        from={new Date(yyyy, mm - 1, 1)}
+                                                                        to={new Date(yyyy, mm - 1, dd)}
+                                                                        onClick={() => handleDateInput(totalsMonthWeek, 'week')}
+                                                                    >
+                                                                        Month to Date
+                                                                    </DateRangePickerItem>
+                                                                    <DateRangePickerItem
+                                                                        key="half"
+                                                                        value="half"
+                                                                        from={new Date(2023, 3, 1)}
+                                                                        to={new Date(2023, 6, 31)}
+                                                                        onClick={() => handleDateInput(totalsQuarterMonth, 'month')}
+                                                                    >
+                                                                        This Quarter
+                                                                    </DateRangePickerItem>
+                                                                    <DateRangePickerItem key="ytd" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput(totalsYearMonth, 'month')}>
+                                                                        Year to date
+                                                                    </DateRangePickerItem>
+                                                                </DateRangePicker>
+
+                                                            </div>
+                                                            <div className='flex items-center'>
+                                                                <Text className='mr-2 flex-none'>Compare Against:</Text>
+
+                                                                <DateRangePicker
+                                                                    className="max-w-md mx-auto"
+                                                                    value={value2}
+                                                                    onValueChange={setValue2}
+                                                                    selectPlaceholder="Select"
+                                                                    color="rose"
+                                                                >
+
+                                                                    {/* <DateRangePickerItem key="today" value="today" from={new Date()} to={new Date()} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
+                            Today
+                        </DateRangePickerItem> */}
+                                                                    <DateRangePickerItem key="yesterday2" value="yesterday2" from={new Date(yyyy, mm - 1, dd - 1)} to={new Date(yyyy, mm - 1, dd)} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
+                                                                        Yesterday (11/10/23)
+                                                                    </DateRangePickerItem>
+                                                                    <DateRangePickerItem key="7days2" value="7days2" from={new Date(yyyy, mm - 1, dd - 7)} onClick={() => handleDateInput2(totalsWeekDay, 'day')}>
+                                                                        Previous 7 Days (27/09/23 - 04/10/23)
+                                                                    </DateRangePickerItem>
+                                                                    <DateRangePickerItem
+                                                                        key="mtd2"
+                                                                        value="mtd2"
+                                                                        from={new Date(yyyy, mm - 1, 1)}
+                                                                        to={new Date(yyyy, mm - 1, dd)}
+                                                                        onClick={() => handleDateInput2(totalsMonthWeek, 'week')}
+                                                                    >
+                                                                        Last Month (September)
+                                                                    </DateRangePickerItem>
+                                                                    <DateRangePickerItem
+                                                                        key="half2"
+                                                                        value="half2"
+                                                                        from={new Date(2023, 3, 1)}
+                                                                        to={new Date(2023, 6, 31)}
+                                                                        onClick={() => handleDateInput2(totalsQuarterMonth, 'month')}
+                                                                    >
+                                                                        Last Quarter (Q2)
+                                                                    </DateRangePickerItem>
+                                                                    <DateRangePickerItem key="ytd2" value="ytd2" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearMonth, 'month')}>
+                                                                        Last Year (2022)
+                                                                    </DateRangePickerItem>
+                                                                </DateRangePicker>
+
+                                                            </div>
+
+                                                        </Grid>
                                                     </Flex>
                                                     <AreaChart
                                                         className=" mt-4"
