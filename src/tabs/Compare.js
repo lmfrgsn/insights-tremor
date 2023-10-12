@@ -32,12 +32,12 @@ export default function Overview() {
 
     const [displayTotals1, setDisplayTotals1] = useState(totalsDayHour);
     const [displayTotals1Index, setDisplayTotals1Index] = useState('hour');
-    const [displayTotals1ToggleHour, setDisplayTotals1ToggleHour] = useState('totalsDayHourStripped');
-    const [displayTotals1ToggleDay, setDisplayTotals1ToggleDay] = useState('totalsDayDay');
-    const [displayTotals1ToggleWeek, setDisplayTotals1ToggleWeek] = useState('totalsDayWeek');
-    const [displayTotals1ToggleMonth, setDisplayTotals1ToggleMonth] = useState('totalsDayMonth');
-    const [displayTotals1ToggleQuarter, setDisplayTotals1ToggleQuarter] = useState('totalsDayQuarter');
-    const [displayTotals1ToggleYear, setDisplayTotals1ToggleYear] = useState('totalsDayYear');
+    const [displayTotals1ToggleHour, setDisplayTotals1ToggleHour] = useState(totalsDayHourStripped);
+    const [displayTotals1ToggleDay, setDisplayTotals1ToggleDay] = useState(totalsDayDay);
+    const [displayTotals1ToggleWeek, setDisplayTotals1ToggleWeek] = useState(totalsWeekDay);
+    const [displayTotals1ToggleMonth, setDisplayTotals1ToggleMonth] = useState(totalsMonthWeek);
+    const [displayTotals1ToggleQuarter, setDisplayTotals1ToggleQuarter] = useState(totalsQuarterMonth);
+    const [displayTotals1ToggleYear, setDisplayTotals1ToggleYear] = useState(totalsYearMonth);
     const [displayTotals1Label, setDisplayTotals1Label] = useState('Today');
 
 
@@ -50,12 +50,12 @@ export default function Overview() {
 
     const [displayTotals2, setDisplayTotals2] = useState(totalsDayHour);
     const [displayTotals2Index, setDisplayTotals2Index] = useState('hour');
-    const [displayTotals2ToggleHour, setDisplayTotals2ToggleHour] = useState('totalsDayHour2');
-    const [displayTotals2ToggleDay, setDisplayTotals2ToggleDay] = useState('totalsDayDay2');
-    const [displayTotals2ToggleWeek, setDisplayTotals2ToggleWeek] = useState('totalsDayWeek2');
-    const [displayTotals2ToggleMonth, setDisplayTotals2ToggleMonth] = useState('totalsDayMonth2');
-    const [displayTotals2ToggleQuarter, setDisplayTotals2ToggleQuarter] = useState('totalsDayQuarter2');
-    const [displayTotals2ToggleYear, setDisplayTotals2ToggleYear] = useState('totalsDayYear2');
+    const [displayTotals2ToggleHour, setDisplayTotals2ToggleHour] = useState(totalsDayHour);
+    const [displayTotals2ToggleDay, setDisplayTotals2ToggleDay] = useState(totalsDayDay);
+    const [displayTotals2ToggleWeek, setDisplayTotals2ToggleWeek] = useState(totalsWeekDay);
+    const [displayTotals2ToggleMonth, setDisplayTotals2ToggleMonth] = useState(totalsMonthWeek);
+    const [displayTotals2ToggleQuarter, setDisplayTotals2ToggleQuarter] = useState(totalsQuarterMonth);
+    const [displayTotals2ToggleYear, setDisplayTotals2ToggleYear] = useState(totalsYearMonth);
     const [displayTotals2Label, setDisplayTotals2Label] = useState('Yesterday');
 
     const [data2, setData2] = useState(["Views"]);
@@ -71,6 +71,11 @@ export default function Overview() {
     const [data, setData] = useState(["Views"]);
 
     const [value, setValue] = useState({
+        from: new Date(2023, 1, 1),
+        to: new Date(),
+    });
+
+    const [value2, setValue2] = useState({
         from: new Date(2023, 1, 1),
         to: new Date(),
     });
@@ -146,13 +151,13 @@ export default function Overview() {
     }, [showTotalViews]);
 
     function handleDateInput($date, $index) {
-        
+
         setDisplayTotals1($date);
         setDisplayTotals1Index($index);
 
-        handleDateInput2($date, $index);
+        // handleDateInput2($date, $index);
 
-        if ($date == totalsDayHour) {
+        if ($date == totalsDayHour || $date == totalsDayDay) {
             setDisplayTotals1ToggleHour(totalsDayHour);
             setDisplayTotals1ToggleDay(totalsDayDay);
             setDisplayTotals1ToggleWeek(false);
@@ -160,7 +165,7 @@ export default function Overview() {
             setDisplayTotals1ToggleQuarter(false);
             setDisplayTotals1ToggleYear(false);
             setDisplayTotals1Label('Today');
-        } else if ($date == totalsWeekDay) {
+        } else if ($date == totalsWeekHour || $date == totalsWeekDay || $date == totalsWeekWeek) {
             setDisplayTotals1ToggleHour(totalsWeekHour);
             setDisplayTotals1ToggleDay(totalsWeekDay);
             setDisplayTotals1ToggleWeek(totalsWeekWeek);
@@ -168,7 +173,7 @@ export default function Overview() {
             setDisplayTotals1ToggleQuarter(false);
             setDisplayTotals1ToggleYear(false);
             setDisplayTotals1Label('Past 7 Days');
-        } else if ($date == totalsMonthWeek) {
+        } else if ($date == totalsMonthHour || $date == totalsMonthDay || $date == totalsMonthWeek || $date == totalsMonthMonth) {
             setDisplayTotals1ToggleHour(totalsMonthHour);
             setDisplayTotals1ToggleDay(totalsMonthDay);
             setDisplayTotals1ToggleWeek(totalsMonthWeek);
@@ -176,7 +181,7 @@ export default function Overview() {
             setDisplayTotals1ToggleQuarter(false);
             setDisplayTotals1ToggleYear(false);
             setDisplayTotals1Label('This Month');
-        } else if ($date == totalsQuarterMonth) {
+        } else if ($date == totalsQuarterHour || $date == totalsQuarterDay || $date == totalsQuarterWeek || $date == totalsQuarterMonth || $date == totalsQuarterQuarter) {
             setDisplayTotals1ToggleHour(totalsQuarterHour);
             setDisplayTotals1ToggleDay(totalsQuarterDay);
             setDisplayTotals1ToggleWeek(totalsQuarterWeek);
@@ -184,7 +189,7 @@ export default function Overview() {
             setDisplayTotals1ToggleQuarter(totalsQuarterQuarter);
             setDisplayTotals1ToggleYear(false);
             setDisplayTotals1Label('This Quarter');
-        } else if ($date == totalsYearMonth) {
+        } else if ($date == totalsYearDay || $date == totalsYearWeek || $date == totalsYearMonth || $date == totalsYearQuarter || $date == totalsYearYear) {
             setDisplayTotals1ToggleHour(false);
             setDisplayTotals1ToggleDay(totalsYearDay);
             setDisplayTotals1ToggleWeek(totalsYearWeek);
@@ -270,7 +275,7 @@ export default function Overview() {
         setDisplayTotals2($date);
         setDisplayTotals2Index($index);
 
-        if ($date == totalsDayHour) {
+        if ($date == totalsDayHour || $date == totalsDayDay) {
             setDisplayTotals2ToggleHour(totalsDayHour);
             setDisplayTotals2ToggleDay(totalsDayDay);
             setDisplayTotals2ToggleWeek(false);
@@ -278,7 +283,7 @@ export default function Overview() {
             setDisplayTotals2ToggleQuarter(false);
             setDisplayTotals2ToggleYear(false);
             setDisplayTotals2Label('Yesterday');
-        } else if ($date == totalsWeekDay) {
+        } else if ($date == totalsWeekHour || $date == totalsWeekDay || $date == totalsWeekWeek) {
             setDisplayTotals2ToggleHour(totalsWeekHour);
             setDisplayTotals2ToggleDay(totalsWeekDay);
             setDisplayTotals2ToggleWeek(totalsWeekWeek);
@@ -286,7 +291,7 @@ export default function Overview() {
             setDisplayTotals2ToggleQuarter(false);
             setDisplayTotals2ToggleYear(false);
             setDisplayTotals2Label('26/10/23 - 03/10/23');
-        } else if ($date == totalsMonthWeek) {
+        } else if ($date == totalsMonthHour || $date == totalsMonthDay || $date == totalsMonthWeek || $date == totalsMonthMonth) {
             setDisplayTotals2ToggleHour(totalsMonthHour);
             setDisplayTotals2ToggleDay(totalsMonthDay);
             setDisplayTotals2ToggleWeek(totalsMonthWeek);
@@ -294,7 +299,7 @@ export default function Overview() {
             setDisplayTotals2ToggleQuarter(false);
             setDisplayTotals2ToggleYear(false);
             setDisplayTotals2Label('Previous Month');
-        } else if ($date == totalsQuarterMonth) {
+        } else if ($date == totalsQuarterHour || $date == totalsQuarterDay || $date == totalsQuarterWeek || $date == totalsQuarterMonth || $date == totalsQuarterQuarter) {
             setDisplayTotals2ToggleHour(totalsQuarterHour);
             setDisplayTotals2ToggleDay(totalsQuarterDay);
             setDisplayTotals2ToggleWeek(totalsQuarterWeek);
@@ -302,7 +307,7 @@ export default function Overview() {
             setDisplayTotals2ToggleQuarter(totalsQuarterQuarter);
             setDisplayTotals2ToggleYear(false);
             setDisplayTotals2Label('Previous Quarter');
-        } else if ($date == totalsYearMonth) {
+        } else if ($date == totalsYearDay || $date == totalsYearWeek || $date == totalsYearMonth || $date == totalsYearQuarter || $date == totalsYearYear) {
             setDisplayTotals2ToggleHour(false);
             setDisplayTotals2ToggleDay(totalsYearDay);
             setDisplayTotals2ToggleWeek(totalsYearWeek);
@@ -364,9 +369,9 @@ export default function Overview() {
 
             </Grid>
 
-            <div class="bg-green-100 border-2 border-green-400 p-4 rounded">
-                <p class="mb-2 font-bold text-center">Test Zone</p>
-                <div class="flex">
+            {/* <div className="bg-green-100 border-2 border-green-400 p-4 rounded">
+                <p className="mb-2 font-bold text-center">Test Zone</p>
+                <div className="flex">
                     <div className="flex-1 text-center">
                         <p onClick={() => handleDateInput(totalsDayHour, 'hour')}>Day View</p>
                         <p onClick={() => handleDateInput(totalsWeekDay, 'day')}>Week View</p>
@@ -382,7 +387,7 @@ export default function Overview() {
                         <p onClick={() => handleDateInput2(totalsYearMonth, 'month')}>Year View</p>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <Grid numItemsMd={2} numItemsLg={3} className="gap-6 mt-4 border-b pb-4">
 
@@ -438,8 +443,8 @@ export default function Overview() {
 
                     <DateRangePicker
                         className="max-w-md mx-auto"
-                        value={value}
-                        onValueChange={setValue}
+                        value={value2}
+                        onValueChange={setValue2}
                         selectPlaceholder="Select"
                         color="rose"
                     >
@@ -447,15 +452,15 @@ export default function Overview() {
                         {/* <DateRangePickerItem key="today" value="today" from={new Date()} to={new Date()} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
                             Today
                         </DateRangePickerItem> */}
-                        <DateRangePickerItem key="yesterday2" value="yesterday" from={new Date(yyyy, mm - 1, dd - 1)} to={new Date(yyyy, mm - 1, dd)} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
+                        <DateRangePickerItem key="yesterday2" value="yesterday2" from={new Date(yyyy, mm - 1, dd - 1)} to={new Date(yyyy, mm - 1, dd)} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
                             Yesterday (11/10/23)
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="7days2" value="7days" from={new Date(yyyy, mm - 1, dd - 7)} onClick={() => handleDateInput2(totalsWeekDay, 'day')}>
+                        <DateRangePickerItem key="7days2" value="7days2" from={new Date(yyyy, mm - 1, dd - 7)} onClick={() => handleDateInput2(totalsWeekDay, 'day')}>
                             Previous 7 Days (27/09/23 - 04/10/23)
                         </DateRangePickerItem>
                         <DateRangePickerItem
                             key="mtd2"
-                            value="mtd"
+                            value="mtd2"
                             from={new Date(yyyy, mm - 1, 1)}
                             to={new Date(yyyy, mm - 1, dd)}
                             onClick={() => handleDateInput2(totalsMonthWeek, 'week')}
@@ -464,14 +469,14 @@ export default function Overview() {
                         </DateRangePickerItem>
                         <DateRangePickerItem
                             key="half2"
-                            value="half"
+                            value="half2"
                             from={new Date(2023, 3, 1)}
                             to={new Date(2023, 6, 31)}
                             onClick={() => handleDateInput2(totalsQuarterMonth, 'month')}
                         >
                             Last Quarter (Q2)
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="ytd2" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearMonth, 'month')}>
+                        <DateRangePickerItem key="ytd2" value="ytd2" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearMonth, 'month')}>
                             Last Year (2022)
                         </DateRangePickerItem>
                     </DateRangePicker>
@@ -491,10 +496,17 @@ export default function Overview() {
                                 <MultiSelectItem value="3" onClick={() => setShowUGC(!showUGC)}>UGC Posts</MultiSelectItem>
                                 <MultiSelectItem value="4" onClick={() => setShowTotalViews(!showTotalViews)}>Total Views</MultiSelectItem>
                             </MultiSelect>
-                            <Select className="ml-2 max-w-100" value="3">
-      
-                                {/* {displayTotals1ToggleHour ? <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')}>Hourly</SelectItem> : ''}
-                                {displayTotals1ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')}>Daily</SelectItem> : ''}
+                            <Select className="ml-2 max-w-100">
+
+                                <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')} className={!displayTotals1ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
+                                <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')} className={!displayTotals1ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
+                                <SelectItem key="3" value="3" onClick={() => handleDateInput(displayTotals1ToggleWeek, 'week')} className={!displayTotals1ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
+                                <SelectItem key="4" value="4" onClick={() => handleDateInput(displayTotals1ToggleMonth, 'month')} className={!displayTotals1ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
+                                <SelectItem key="5" value="5" onClick={() => handleDateInput(displayTotals1ToggleQuarter, 'quarter')} className={!displayTotals1ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
+                                <SelectItem key="6" value="6" onClick={() => handleDateInput(displayTotals1ToggleYear, 'year')} className={!displayTotals1ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
+
+                                {/* {displayTotals1ToggleHour != false ? <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')}>Hourly</SelectItem> : ''} */}
+                                {/* {displayTotals1ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')}>Daily</SelectItem> : ''}
                                 {displayTotals1ToggleWeek ? <SelectItem key="3" value="3" onClick={() => handleDateInput(displayTotals1ToggleWeek, 'week')}>Weekly</SelectItem> : ''}
                                 {displayTotals1ToggleMonth ? <SelectItem key="4" value="4" onClick={() => handleDateInput(displayTotals1ToggleMonth, 'month')}>Monthly</SelectItem> : ''}
                                 {displayTotals1ToggleQuarter ? <SelectItem key="5" value="5" onClick={() => handleDateInput(displayTotals1ToggleQuarter, 'quarter')}>Quarterly</SelectItem> : ''}
@@ -529,6 +541,13 @@ export default function Overview() {
                                 <MultiSelectItem value="4" onClick={() => setShowTotalViews2(!showTotalViews2)}>Total Views</MultiSelectItem>
                             </MultiSelect>
                             <Select className="ml-2 max-w-100">
+
+                                <SelectItem key="sec1" value="1" onClick={() => handleDateInput2(displayTotals2ToggleHour, 'hour')} className={!displayTotals2ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
+                                <SelectItem key="sec2" value="2" onClick={() => handleDateInput2(displayTotals2ToggleDay, 'day')} className={!displayTotals2ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
+                                <SelectItem key="sec3" value="3" onClick={() => handleDateInput2(displayTotals2ToggleWeek, 'week')} className={!displayTotals2ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
+                                <SelectItem key="sec4" value="4" onClick={() => handleDateInput2(displayTotals2ToggleMonth, 'month')} className={!displayTotals2ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
+                                <SelectItem key="sec5" value="5" onClick={() => handleDateInput2(displayTotals2ToggleQuarter, 'quarter')} className={!displayTotals2ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
+                                <SelectItem key="sec6" value="6" onClick={() => handleDateInput2(displayTotals2ToggleYear, 'year')} className={!displayTotals2ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
 
                                 {/* {displayTotals1ToggleHour ? <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')}>Hourly</SelectItem> : ''}
                                 {displayTotals1ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')}>Daily</SelectItem> : ''}
@@ -1042,19 +1061,19 @@ export default function Overview() {
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
                                                     viewBox="0 0 24 24"
-                                                    stroke-width="1.5"
+                                                    strokeWidth="1.5"
                                                     stroke="currentColor"
                                                     className="h-6 w-6">
                                                     <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
                                                         d="M6 18L18 6M6 6l12 12" />
                                                 </svg>
                                             </button>
                                         </div>
                                         <Flex className="space-x-3 truncate mb-4" justifyContent="start" alignItems="baseline">
                                             {/* <Icon icon={item.icon} variant="light" size="xs" color="neutral" tooltip="Up 20" /> */}
-                                            <span className="tremor-Icon-root inline-flex flex-shrink-0 items-center bg-neutral-100 text-neutral-500 rounded-tremor-default px-1.5 py-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.08404 2.57991C5.84727 2.26299 6.66554 2.09985 7.49195 2.09985C8.31836 2.09985 9.13663 2.26299 9.89986 2.57991C10.6631 2.89682 11.3562 3.36129 11.9396 3.94666L11.9428 3.94994L12.0001 4.00793L12.0573 3.94994L12.0606 3.94666C12.6439 3.36129 13.3371 2.89682 14.1003 2.57991C14.8635 2.26299 15.6818 2.09985 16.5082 2.09985C17.3346 2.09985 18.1529 2.26299 18.9161 2.57991C19.6791 2.89671 20.372 3.36097 20.9552 3.94606C23.4521 6.44364 23.5077 10.5732 20.549 13.5874L20.5426 13.5938L12.6938 21.4426C12.5098 21.6266 12.2603 21.73 12.0001 21.73C11.7399 21.73 11.4903 21.6266 11.3063 21.4426L3.45115 13.5874C0.492464 10.5733 0.548014 6.44363 3.04493 3.94605C3.62814 3.36096 4.32108 2.89671 5.08404 2.57991Z" fill="#D12E3C"></path></svg></span>
+                                            <span className="tremor-Icon-root inline-flex flex-shrink-0 items-center bg-neutral-100 text-neutral-500 rounded-tremor-default px-1.5 py-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M5.08404 2.57991C5.84727 2.26299 6.66554 2.09985 7.49195 2.09985C8.31836 2.09985 9.13663 2.26299 9.89986 2.57991C10.6631 2.89682 11.3562 3.36129 11.9396 3.94666L11.9428 3.94994L12.0001 4.00793L12.0573 3.94994L12.0606 3.94666C12.6439 3.36129 13.3371 2.89682 14.1003 2.57991C14.8635 2.26299 15.6818 2.09985 16.5082 2.09985C17.3346 2.09985 18.1529 2.26299 18.9161 2.57991C19.6791 2.89671 20.372 3.36097 20.9552 3.94606C23.4521 6.44364 23.5077 10.5732 20.549 13.5874L20.5426 13.5938L12.6938 21.4426C12.5098 21.6266 12.2603 21.73 12.0001 21.73C11.7399 21.73 11.4903 21.6266 11.3063 21.4426L3.45115 13.5874C0.492464 10.5733 0.548014 6.44363 3.04493 3.94605C3.62814 3.36096 4.32108 2.89671 5.08404 2.57991Z" fill="#D12E3C"></path></svg></span>
                                             <Metric>9734</Metric>
                                             <Text>vs. <Bold>2734</Bold></Text>
                                         </Flex>
