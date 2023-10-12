@@ -1,31 +1,31 @@
 export const totalsDayHour = [
     {
         hour: "00:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "01:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "02:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "03:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "04:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "05:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "06:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "07:00",
@@ -100,31 +100,31 @@ export const totalsDayHour = [
 export const totalsDayHourStripped = [
     {
         hour: "00:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "01:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "02:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "03:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "04:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "05:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "06:00",
-        Views: 0,
+        Views: 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0, Likes: 0, Comments: 0, "Content Views": 0, "Unique Content Views": 0, "Shared Post Views": 0, "Recognition Posts": 0, "User Generated Posts": 0, "File Downloads": 0, "Video Plays": 0, "Audio Plays": 0, "Competition Posts": 0, "Event Posts": 0, "Compliance Posts": 0, "Planner Events": 0, "Planner Responses": 0, "Search Volume": 0,
     },
     {
         hour: "07:00",
