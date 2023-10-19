@@ -2,11 +2,11 @@ import {
   TabGroup, Tab, TabList, TabPanel, TabPanels
 } from "@tremor/react";
 import Header from "./components/Header"
-// import Overview from "./tabs/Overview";
+import Overview from "./tabs/Overview";
 import Compare from "./tabs/Compare";
-// import Groups from "./tabs/Groups";
+import Users from "./tabs/Users";
 // import Search from "./tabs/Search";
-// import Reports from "./tabs/Reports";
+import Reports from "./tabs/Reports";
 import './App.css';
 
 function App() {
@@ -17,25 +17,25 @@ function App() {
       <Header />
 
       <div className="container mx-auto px-4">
-        <TabGroup index={1}>
+        <TabGroup>
           <TabList className="mt-8">
             <Tab>Overview</Tab>
             <Tab>Compare</Tab>
-            <Tab>Groups</Tab>
+            <Tab>Users</Tab>
             <Tab>Reports</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-              {/* <Overview /> */}
+              <Overview />
             </TabPanel>
             <TabPanel>
               <Compare />
             </TabPanel>
             <TabPanel>
-              {/* <Groups /> */}
+              <Users />
             </TabPanel>
             <TabPanel>
-              {/* <Reports /> */}
+              <Reports />
             </TabPanel>
             <TabPanel>
               {/* <Search /> */}

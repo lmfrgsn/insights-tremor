@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 import {
-    Card, Text, Metric, AreaChart, Grid, Flex, Bold, SelectItem, Select, DateRangePicker, DateRangePickerItem, Icon, MultiSelect, MultiSelectItem, BadgeDelta, LineChart, Title, BarChart, TabGroup, TabList, Tab
+    Card, Text, Metric, AreaChart, Grid, Flex, Bold, SelectItem, Select, DateRangePicker, DateRangePickerItem, Icon, MultiSelect, MultiSelectItem, BadgeDelta, LineChart, Title, BarChart, TabGroup, TabList, Tab, DonutChart, Legend, TabPanels, Button, TabPanel, BarList
 } from "@tremor/react";
-import { BarChart4Icon, LineChartIcon } from 'lucide-react';
+import { BarChart4Icon, LineChartIcon, ExpandIcon, SearchIcon } from 'lucide-react';
 // import { Dialog, Transition } from "@headlessui/react";
 // import { ExpandIcon, SearchIcon } from 'lucide-react';
-// import { popularContentDay } from "../data/popularContent";
+import { popularContentDay, popularContentWeek } from "../data/popularContent";
+import { popularGroups, popularUsers } from "../data/popularUsers";
 // import { userLoginsDay } from "../data/userLogins";
 // import { viewsDay, viewsWeek, viewsDay2, viewsWeek2, viewsYTD } from "../data/views";
 import { viewsYTD, viewsDay } from "../data/views";
@@ -16,12 +17,12 @@ import { totalsMonthHour, totalsMonthDay, totalsMonthWeek, totalsMonthMonth } fr
 import { totalsQuarterHour, totalsQuarterDay, totalsQuarterWeek, totalsQuarterMonth, totalsQuarterQuarter } from "../data/totalsQuarter";
 import { totalsYearDay, totalsYearWeek, totalsYearMonth, totalsYearQuarter, totalsYearYear } from "../data/totalsYear";
 import { blocks, blocksViewsDay, blocksViewsWeek } from "../data/blocks";
-
+import { devices } from "../data/devices";
 
 // import { blocks, blocksViewsDay } from "../data/blocks";
 // import { compareViewsDay, compareViewsWeek } from "../data/compare";
 
-export default function Compare() {
+export default function Overview() {
 
     const [selectedChart1, setSelectedChart1] = useState(0);
     const [selectedChart2, setSelectedChart2] = useState(0);
@@ -327,7 +328,7 @@ export default function Compare() {
 
     return (
         <>
-            <Grid numItemsMd={2} numItemsLg={3} className="gap-6 mt-4 border-b pb-4 mb-4">
+            {/* <Grid numItemsMd={2} numItemsLg={3} className="gap-6 mt-4 border-b pb-4 mb-4">
 
                 <div className='flex items-center'>
                     <Text className='mr-2 flex-none'>Content Items</Text>
@@ -371,7 +372,7 @@ export default function Compare() {
                     </Select>
                 </div>
 
-            </Grid>
+            </Grid> */}
 
             {/* <div className="bg-green-100 border-2 border-green-400 p-4 rounded">
                 <p className="mb-2 font-bold text-center">Test Zone</p>
@@ -393,10 +394,10 @@ export default function Compare() {
                 </div>
             </div> */}
 
-            <Grid numItemsMd={2} numItemsLg={3} className="gap-6 mt-4 border-b pb-4">
+            <Grid numItemsMd={3} numItemsLg={3} className="gap-6 mt-4  border-b pb-4">
 
                 <div className='flex items-center'>
-                    <Text className='mr-2 flex-none'>Show Insights for</Text>
+                    <Text className='mr-2 flex-none'>Show Inisghts for</Text>
 
                     <DateRangePicker
                         className="max-w-md mx-auto"
@@ -441,61 +442,143 @@ export default function Compare() {
 
                 </div>
                 <div className='flex items-center'>
+                    <Text className='mr-2 flex-none'>Exclude</Text>
+                    <MultiSelect>
+                        <MultiSelectItem value="1">Recognition Posts</MultiSelectItem>
+                        <MultiSelectItem value="2">User Generated Content</MultiSelectItem>
+                        {/* <MultiSelectItem value="3">Home Page</MultiSelectItem> */}
 
+                    </MultiSelect>
                 </div>
                 <div className='flex items-center'>
-                    <Text className='mr-2 flex-none'>Compare Against:</Text>
-
-                    <DateRangePicker
-                        className="max-w-md mx-auto"
-                        value={value2}
-                        onValueChange={setValue2}
-                        selectPlaceholder="Select"
-                        color="rose"
-                    >
-
-                        {/* <DateRangePickerItem key="today" value="today" from={new Date()} to={new Date()} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
-                            Today
-                        </DateRangePickerItem> */}
-                        <DateRangePickerItem key="yesterday2" value="yesterday2" from={new Date(yyyy, mm - 1, dd - 1)} to={new Date(yyyy, mm - 1, dd)} onClick={() => handleDateInput2(totalsDayHour, 'hour')}>
-                            Yesterday (11/10/23)
-                        </DateRangePickerItem>
-                        <DateRangePickerItem key="7days2" value="7days2" from={new Date(yyyy, mm - 1, dd - 7)} onClick={() => handleDateInput2(totalsWeekDay, 'day')}>
-                            Previous 7 Days (27/09/23 - 04/10/23)
-                        </DateRangePickerItem>
-                        <DateRangePickerItem
-                            key="mtd2"
-                            value="mtd2"
-                            from={new Date(yyyy, mm - 1, 1)}
-                            to={new Date(yyyy, mm - 1, dd)}
-                            onClick={() => handleDateInput2(totalsMonthWeek, 'week')}
-                        >
-                            Last Month (September)
-                        </DateRangePickerItem>
-                        <DateRangePickerItem
-                            key="half2"
-                            value="half2"
-                            from={new Date(2023, 3, 1)}
-                            to={new Date(2023, 6, 31)}
-                            onClick={() => handleDateInput2(totalsQuarterMonth, 'month')}
-                        >
-                            Last Quarter (Q2)
-                        </DateRangePickerItem>
-                        <DateRangePickerItem key="ytd2" value="ytd2" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearQuarter, 'quarter')}>
-                            Last Year (2022)
-                        </DateRangePickerItem>
-                    </DateRangePicker>
-
+                    <Text className='mr-2 flex-none'>Workspace</Text>
+                    <Select value="1">
+                        <SelectItem value="1">
+                            Engage
+                        </SelectItem>
+                        <SelectItem value="2">
+                            Test Environment
+                        </SelectItem>
+                    </Select>
                 </div>
 
             </Grid>
 
-            <Grid numItemsMd={1} numItemsLg={2} className="gap-6 mt-6">
+            <Grid numItemsSm={1} numItemsMd={2} numItemsLg={3} className="gap-6 mt-6">
+                <Card className='flex flex-col justify-between lg:col-span-2'>
+                    <Flex className="flex-col align-start items-start">
+                        <Flex className="mb-2" alignItems="center">
+                            <Title className="flex w-full">Active Users</Title>
+                            <TabGroup index={selectedChart1} onIndexChange={setSelectedChart1} className="flex justify-end">
+                                <TabList variant="solid">
+                                    <Tab icon={BarChart4Icon}>Bar</Tab>
+                                    <Tab icon={LineChartIcon}>Line</Tab>
+                                </TabList>
+                            </TabGroup>
+                        </Flex>
+                        <div className="flex align-end full">
+                            {/* <MultiSelect placeholder="Include..." className="max-w-100">
+                                <MultiSelectItem value="1" onClick={() => setShowLikes(!showLikes)}>Likes</MultiSelectItem>
+                                <MultiSelectItem value="2" onClick={() => setShowComments(!showComments)}>Comments</MultiSelectItem>
+                                <MultiSelectItem value="25">Published Content</MultiSelectItem>
+                                <MultiSelectItem value="26">User Logins</MultiSelectItem>
+                                <MultiSelectItem value="3" onClick={() => setShowUGC(!showUGC)}>UGC Posts</MultiSelectItem>
+                                <MultiSelectItem value="4" onClick={() => setShowTotalViews(!showTotalViews)}>Total Views</MultiSelectItem>
+                            </MultiSelect> */}
+                            <Select className="max-w-100" placeholder="Select Range..">
+                                <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')} className={!displayTotals1ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
+                                <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')} className={!displayTotals1ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
+                                <SelectItem key="3" value="3" onClick={() => handleDateInput(displayTotals1ToggleWeek, 'week')} className={!displayTotals1ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
+                                <SelectItem key="4" value="4" onClick={() => handleDateInput(displayTotals1ToggleMonth, 'month')} className={!displayTotals1ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
+                                <SelectItem key="5" value="5" onClick={() => handleDateInput(displayTotals1ToggleQuarter, 'quarter')} className={!displayTotals1ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
+                                <SelectItem key="6" value="6" onClick={() => handleDateInput(displayTotals1ToggleYear, 'year')} className={!displayTotals1ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
+
+                                {/* {displayTotals1ToggleHour != false ? <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')}>Hourly</SelectItem> : ''} */}
+                                {/* {displayTotals1ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')}>Daily</SelectItem> : ''}
+                                {displayTotals1ToggleWeek ? <SelectItem key="3" value="3" onClick={() => handleDateInput(displayTotals1ToggleWeek, 'week')}>Weekly</SelectItem> : ''}
+                                {displayTotals1ToggleMonth ? <SelectItem key="4" value="4" onClick={() => handleDateInput(displayTotals1ToggleMonth, 'month')}>Monthly</SelectItem> : ''}
+                                {displayTotals1ToggleQuarter ? <SelectItem key="5" value="5" onClick={() => handleDateInput(displayTotals1ToggleQuarter, 'quarter')}>Quarterly</SelectItem> : ''}
+                                {displayTotals1ToggleYear ? <SelectItem key="6" value="6" onClick={() => handleDateInput(displayTotals1ToggleYear, 'year')}>Yearly</SelectItem> : ''} */}
+                            </Select>
+                        </div>
+                    </Flex>
+                    {/* <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
+                        <Metric>{week ? 1568 : 369}</Metric>
+                    </Flex> */}
+                    {selectedChart1 === 0 ? (
+                        <BarChart
+                            className=" mt-4"
+                            data={displayTotals1}
+                            index={displayTotals1Index}
+                            categories={["Logged In", "Registered"]}
+                            colors={["emerald", "cyan"]}
+                            startEndOnly={false}
+                            showLegend={true}
+                            // curveType={"linear"}
+                            showAnimation={true}
+                            onValueChange={() => { console.log('test') }}
+                        />) : (
+                        <>
+                            <AreaChart
+                                className=" mt-4"
+                                data={displayTotals1}
+                                index={displayTotals1Index}
+                                categories={["Logged In", "Registered"]}
+                                colors={["emerald", "cyan"]}
+                                startEndOnly={false}
+                                showLegend={true}
+                                // curveType={"monotone"}
+                                showAnimation={true}
+                                showGradient={true}
+                                onValueChange={() => { console.log('test') }}
+                            />
+                        </>)}
+                </Card>
+                <Card className='flex flex-col justify-between'>
+                    <Title>Devices</Title>
+                    <DonutChart
+                        className="mt-6"
+                        data={devices}
+                        category="sales"
+                        index="name"
+                        // valueFormatter={dataFormatter}
+                        variant="pie"
+                        colors={["cyan", "green", "indigo"]}
+                    />
+                    <Legend
+                        className="mt-3"
+                        categories={["iOS", "Android", "WebApp"]}
+                        colors={["cyan", "green", "indigo"]}
+                    />
+                </Card>
+            </Grid>
+
+            <Grid numItemsMd={2} numItemsLg={2} className="gap-6 mt-6">
+                {/* <Card className='flex flex-col justify-between'>
+                    <Flex alignItems="start">
+                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
+                    </Flex>
+                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
+                        <Metric>{week ? 1568 : 369}</Metric>
+                    </Flex>
+                    <AreaChart
+                        className="h-72 mt-4"
+                        data={week ? viewsWeek : viewsDay}
+                        index={week ? "day" : "hour"}
+                        categories={["Views"]}
+                        colors={["indigo", "cyan"]}
+                        startEndOnly={week ? false : true}
+                        showLegend={false}
+                        curveType={week ? "linear" : "natural"}
+                        yAxisWidth={30}
+                    />
+                </Card> */}
+
                 <Card className='flex flex-col justify-between'>
                     <Flex className="flex-col align-start items-start">
                         <Flex className="mb-2" alignItems="center">
-                            <Title className="flex w-full">{displayTotals1Label}</Title>
-                            <TabGroup index={selectedChart1} onIndexChange={setSelectedChart1} className="flex justify-end">
+                            <Title className="flex w-full">Content Views</Title>
+                            <TabGroup index={selectedChart2} onIndexChange={setSelectedChart2} className="flex justify-end">
                                 <TabList variant="solid">
                                     <Tab icon={BarChart4Icon}>Bar</Tab>
                                     <Tab icon={LineChartIcon}>Line</Tab>
@@ -531,7 +614,7 @@ export default function Compare() {
                     {/* <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
                         <Metric>{week ? 1568 : 369}</Metric>
                     </Flex> */}
-                    {selectedChart1 === 0 ? (
+                    {selectedChart2 === 0 ? (
                         <BarChart
                             className=" mt-4"
                             data={displayTotals1}
@@ -560,515 +643,57 @@ export default function Compare() {
                             />
                         </>)}
                 </Card>
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="flex-col align-start items-start">
-                        <Flex className="space-x-8 mb-2" justifyContent="between" alignItems="center">
-                            <div class="flex">
-                                <Title className="w-full">{displayTotals2Label}</Title>
-                            </div>
-                            <TabGroup index={selectedChart2} onIndexChange={setSelectedChart2} className="flex justify-end">
-                                <TabList variant="solid">
-                                    <Tab icon={BarChart4Icon}>Bar</Tab>
-                                    <Tab icon={LineChartIcon}>Line</Tab>
-                                </TabList>
-                            </TabGroup>
-                        </Flex>
-                        <div className="flex align-end full">
-                            <MultiSelect placeholder="Include..." className="max-w-100">
-                                <MultiSelectItem value="1" onClick={() => setShowLikes2(!showLikes2)}>Likes</MultiSelectItem>
-                                <MultiSelectItem value="2" onClick={() => setShowComments2(!showComments2)}>Comments</MultiSelectItem>
-                                <MultiSelectItem value="25">Published Content</MultiSelectItem>
-                                <MultiSelectItem value="26">User Logins</MultiSelectItem>
-                                <MultiSelectItem value="3" onClick={() => setShowUGC2(!showUGC2)}>UGC Posts</MultiSelectItem>
-                                <MultiSelectItem value="4" onClick={() => setShowTotalViews2(!showTotalViews2)}>Total Views</MultiSelectItem>
-                            </MultiSelect>
-                            <Select className="ml-2 max-w-100" placeholder="Select Range..">
+                <Card>
+                    <Title>Popular Content</Title>
+                    {/* <Flex alignItems="center" justifyContent="between">
+                    <Text className="text-base text-gray-700 font-medium">Top Pages</Text>
+                    <Text className="uppercase">Visitors</Text>
+                  </Flex> */}
 
-                                <SelectItem key="sec1" value="1" onClick={() => handleDateInput2(displayTotals2ToggleHour, 'hour')} className={!displayTotals2ToggleHour ? 'hidden' : ''}>Hourly</SelectItem>
-                                <SelectItem key="sec2" value="2" onClick={() => handleDateInput2(displayTotals2ToggleDay, 'day')} className={!displayTotals2ToggleDay ? 'hidden' : ''}>Daily</SelectItem>
-                                <SelectItem key="sec3" value="3" onClick={() => handleDateInput2(displayTotals2ToggleWeek, 'week')} className={!displayTotals2ToggleWeek ? 'hidden' : ''}>Weekly</SelectItem>
-                                <SelectItem key="sec4" value="4" onClick={() => handleDateInput2(displayTotals2ToggleMonth, 'month')} className={!displayTotals2ToggleMonth ? 'hidden' : ''}>Monthly</SelectItem>
-                                <SelectItem key="sec5" value="5" onClick={() => handleDateInput2(displayTotals2ToggleQuarter, 'quarter')} className={!displayTotals2ToggleQuarter ? 'hidden' : ''}>Quarterly</SelectItem>
-                                <SelectItem key="sec6" value="6" onClick={() => handleDateInput2(displayTotals2ToggleYear, 'year')} className={!displayTotals2ToggleYear ? 'hidden' : ''}>Yearly</SelectItem>
-
-                                {/* {displayTotals1ToggleHour ? <SelectItem key="1" value="1" onClick={() => handleDateInput(displayTotals1ToggleHour, 'hour')}>Hourly</SelectItem> : ''}
-                                {displayTotals1ToggleDay ? <SelectItem key="2" value="2" onClick={() => handleDateInput(displayTotals1ToggleDay, 'day')}>Daily</SelectItem> : ''}
-                                {displayTotals1ToggleWeek ? <SelectItem key="3" value="3" onClick={() => handleDateInput(displayTotals1ToggleWeek, 'week')}>Weekly</SelectItem> : ''}
-                                {displayTotals1ToggleMonth ? <SelectItem key="4" value="4" onClick={() => handleDateInput(displayTotals1ToggleMonth, 'month')}>Monthly</SelectItem> : ''}
-                                {displayTotals1ToggleQuarter ? <SelectItem key="5" value="5" onClick={() => handleDateInput(displayTotals1ToggleQuarter, 'quarter')}>Quarterly</SelectItem> : ''}
-                                {displayTotals1ToggleYear ? <SelectItem key="6" value="6" onClick={() => handleDateInput(displayTotals1ToggleYear, 'year')}>Yearly</SelectItem> : ''} */}
-                            </Select>
-                            <div class="flex content-center ml-3">
-                                <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-default-checkbox" />
-                                <label for="hs-default-checkbox" class="text-sm text-gray-500 ml-1 dark:text-gray-400 self-center">Mimic</label>
-                            </div>
-                        </div>
-                    </Flex>
-                    {/* <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex> */}
-                    {selectedChart2 === 0 ? (
-                        <BarChart
-                            className=" mt-4"
-                            data={displayTotals2}
-                            index={displayTotals2Index}
-                            categories={data2}
-                            colors={["indigo", "emerald", "rose", "amber", "violet", "red", "pink"]}
-                            startEndOnly={false}
-                            showLegend={true}
-                            // curveType={"linear"}
-                            showAnimation={true}
-                            onValueChange={() => { console.log('test') }}
-                        />) : (
-                        <>
-                            <AreaChart
-                                className=" mt-4"
-                                data={displayTotals2}
-                                index={displayTotals2Index}
-                                categories={data2}
-                                colors={["indigo", "emerald", "rose", "amber", "violet", "red", "pink"]}
-                                startEndOnly={false}
-                                showLegend={true}
-                                curveType={"linear"}
-                                showAnimation={true}
-                                showGradient={true}
-                                onValueChange={() => { console.log('test') }}
-                            />
-                        </>)}
+                    <TabGroup>
+                        <TabList className="mt-2">
+                            <Tab>Views</Tab>
+                            <Tab>Unique Views</Tab>
+                            <Tab>Likes</Tab>
+                            <Tab>Comments</Tab>
+                        </TabList>
+                        <TabPanels>
+                            <TabPanel>
+                                <BarList
+                                    // data={userLoginsDay}
+                                    data={popularContentDay.slice(0, 6)}
+                                    className="mt-8"
+                                    showAnimation={false}
+                                // valueFormatter={valueFormatter}
+                                />
+                                <Button
+                                    icon={ExpandIcon}
+                                    className="mt-4 w-full bg-white border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-gray-300"
+                                // onClick={openModal}
+                                >
+                                    Show More
+                                </Button>
+                            </TabPanel>
+                        </TabPanels>
+                    </TabGroup>
                 </Card>
-
-                {/* <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={totalsWeekHour}
-                        index="hour"
-                        // categories={["This Year", "Last Year"]}
-                        categories={["Views", "Likes", "Comments"]}
-                        colors={["indigo", "red", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                        autoMinValue={true}
-                        connectNulls={true}
-                    // yAxisWidth={70}
-                    />
-                </Card> */}
-
-                {/* <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={totalsMonthWeek}
-                        index="week"
-                        categories={["Views"]}
-                        // categories={["Views", "Views2"]}
-                        colors={["indigo", "red", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                    // yAxisWidth={70}
-                    />
-                </Card> */}
-
             </Grid>
 
-            {/* <Grid numItemsMd={1} numItemsLg={2} className="gap-6 mt-6">
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={totalsQuarterHour}
-                        index="hour"
-                        // categories={["This Year", "Last Year"]}
-                        categories={["Views", "Likes", "Comments"]}
-                        colors={["indigo", "red", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                        autoMinValue={true}
-                        connectNulls={true}
-                    // yAxisWidth={70}
-                    />
-                </Card>
 
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={totalsQuarterDay}
-                        index="day"
-                        categories={["Views"]}
-                        // categories={["Views", "Views2"]}
-                        colors={["indigo", "red", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                    // yAxisWidth={70}
-                    />
-                </Card>
-
-            </Grid>
-
-            <Grid numItemsMd={1} numItemsLg={2} className="gap-6 mt-6">
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={totalsMonthHour}
-                        index="hour"
-                        // categories={["This Year", "Last Year"]}
-                        categories={["Views"]}
-                        colors={["indigo", "red", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                        autoMinValue={true}
-                        connectNulls={true}
-                    // yAxisWidth={70}
-                    />
-                </Card>
-
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={totalsMonthDay}
-                        index="day"
-                        categories={["Views"]}
-                        // categories={["Views", "Views2"]}
-                        colors={["indigo", "red", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                    // yAxisWidth={70}
-                    />
-                </Card>
-
-            </Grid>
-
-            <Grid numItemsMd={1} numItemsLg={2} className="gap-6 mt-6">
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={totalsWeekHour}
-                        index="hour"
-                        // categories={["This Year", "Last Year"]}
-                        categories={["Views", "Likes", "Comments"]}
-                        colors={["indigo", "red", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                        autoMinValue={true}
-                        connectNulls={true}
-                    // yAxisWidth={70}
-                    />
-                </Card>
-
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={totalsWeekDay}
-                        index="day"
-                        categories={["Views", "Likes", "Comments"]}
-                        // categories={["Views", "Views2"]}
-                        colors={["indigo", "red", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                    // yAxisWidth={70}
-                    />
-                </Card>
-
-            </Grid>
-
-            <Grid numItemsMd={1} numItemsLg={1} className="gap-6 mt-6">
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={totalsDayHour}
-                        index="hour"
-                        // categories={["This Year", "Last Year"]}
-                        categories={["Views"]}
-                        colors={["indigo", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                    // yAxisWidth={70}
-                    />
-                </Card>
-
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={totalsDayDay}
-                        index="day"
-                        categories={["Views"]}
-                        // categories={["Views", "Views2"]}
-                        colors={["indigo", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                    // yAxisWidth={70}
-                    />
-                </Card>
-
-            </Grid>
-
-            <Grid numItemsMd={1} numItemsLg={1} className="gap-6 mt-6">
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <BarChart
-                        className=" mt-4"
-                        data={viewsDay}
-                        index="hour"
-                        // categories={["This Year", "Last Year"]}
-                        categories={["Views", "Views2"]}
-                        colors={["indigo", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                    // yAxisWidth={70}
-                    />
-                </Card>
-
-                <Card className='flex flex-col justify-between'>
-                    <Flex className="space-x-8 justify-between">
-                        <Text className="mb-2"><Bold>Content Views</Bold></Text>
-                        <div>
-                            <Select value="1">
-                                <SelectItem key="1" value="1">Hour</SelectItem>
-                                <SelectItem key="2" value="2">Day</SelectItem>
-                                <SelectItem key="3" value="3">Week</SelectItem>
-                                <SelectItem key="4" value="4">Month</SelectItem>
-                                <SelectItem key="5" value="5">Quarter</SelectItem>
-                                <SelectItem key="6" value="6">Year</SelectItem>
-                            </Select>
-                        </div>
-                    </Flex>
-                    <Flex className="space-x-3 truncate" justifyContent="start" alignItems="baseline">
-                        <Metric>{week ? 1568 : 369}</Metric>
-                    </Flex>
-                    <AreaChart
-                        className=" mt-4"
-                        data={viewsYTD}
-                        index="month"
-                        categories={["This Year", "Last Year"]}
-                        // categories={["Views", "Views2"]}
-                        colors={["indigo", "cyan"]}
-                        startEndOnly={week ? false : true}
-                        showLegend={true}
-                        curveType={"linear"}
-                        showAnimation={true}
-                        // onClickLegendItem={true}
-                        onValueChange={() => { console.log('test') }}
-                    // yAxisWidth={70}
-                    />
-                </Card>
-
-            </Grid> */}
+            {/*             
+            <BarChart
+                className=" mt-4"
+                data={userLoginsDay}
+                index="hour"
+                categories={["Logged In", "Registered"]}
+                colors={["emerald", "cyan"]}
+                startEndOnly={false}
+                showLegend={true}
+                // curveType={"linear"}
+                showAnimation={true}
+                onValueChange={() => { console.log('test') }}
+            />
+             */}
 
             <Grid numItemsSm={2} numItemsLg={4} className="gap-6 mt-6">
                 {blocks.map((item) => (
@@ -1077,18 +702,16 @@ export default function Compare() {
                             <Text className="mb-2">{item.title}</Text>
                         </Flex>
                         <Flex className="space-x-3 truncate mb-4" justifyContent="start" alignItems="baseline">
-                            <Icon icon={item.icon} variant="light" size="xs" color="neutral" tooltip="Up 20" className="bg-opacity-10 hover:bg-opacity-5" />
+                            <Icon icon={item.icon} variant="light" size="xs" color="neutral" className="bg-opacity-10 hover:bg-opacity-5" />
                             <Metric>{item.metric}</Metric>
-                            <Text>vs. <Bold>{item.metricPrev}</Bold></Text>
                         </Flex>
                         <Flex alignItems="start">
-                            <BadgeDelta deltaType={item.deltaType}>{item.delta}</BadgeDelta>
                             <AreaChart
                                 className="h-7 opacity-30 hover:opacity-100"
                                 data={blocksViewsDay}
                                 index={"hour"}
-                                categories={["This Period", "Previous Period"]}
-                                colors={['lime', 'indigo']}
+                                categories={["This Period"]}
+                                colors={['emerald']}
                                 // startEndOnly={true}
                                 showLegend={false}
                                 showXAxis={false}
@@ -1101,6 +724,75 @@ export default function Compare() {
                         </Flex>
                     </Card>
                 ))}
+            </Grid>
+
+            <Grid numItemsSm={2} numItemsLg={2} className="gap-6 mt-6">
+                <Card>
+                    <Title>Popular Lists</Title>
+                    <TabGroup>
+                        <TabList className="mt-2">
+                            <Tab>Views</Tab>
+                            <Tab>Unique Views</Tab>
+                            <Tab>Likes</Tab>
+                            <Tab>Comments</Tab>
+                        </TabList>
+                        <TabPanels>
+                            <TabPanel>
+                                <BarList
+                                    // data={userLoginsDay}
+                                    data={popularContentDay.slice(0, 6)}
+                                    className="mt-8"
+                                    showAnimation={false}
+                                // valueFormatter={valueFormatter}
+                                />
+                                <Button
+                                    icon={ExpandIcon}
+                                    className="mt-4 w-full bg-white border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-gray-300"
+                                // onClick={openModal}
+                                >
+                                    Show More
+                                </Button>
+                            </TabPanel>
+                        </TabPanels>
+                    </TabGroup>
+                </Card>
+                <Card className='flex flex-col'>
+                    <Flex className="mb-2" alignItems="center">
+                        <Title className="flex w-full">Most Active Groups</Title>
+                        <TabGroup index={selectedChart1} className="flex justify-end">
+                            <TabList variant="solid">
+                                <Tab>By Number</Tab>
+                                <Tab>By %</Tab>
+                            </TabList>
+                        </TabGroup>
+                    </Flex>
+                    <TabGroup>
+                        <TabList className="mt-2">
+                            <Tab>Total Views</Tab>
+                            <Tab>Unique Views</Tab>
+                            <Tab>Likes</Tab>
+                            <Tab>Comments</Tab>
+                        </TabList>
+                        <TabPanels>
+                            <TabPanel>
+                                <BarList
+                                    // data={userLoginsDay}
+                                    data={popularGroups.slice(0, 6)}
+                                    className="mt-8"
+                                    showAnimation={false}
+                                // valueFormatter={valueFormatter}
+                                />
+                                <Button
+                                    icon={ExpandIcon}
+                                    className="mt-4 w-full bg-white border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-gray-300"
+                                // onClick={openModal}
+                                >
+                                    Show More
+                                </Button>
+                            </TabPanel>
+                        </TabPanels>
+                    </TabGroup>
+                </Card>
             </Grid>
 
             {isModal ? <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
