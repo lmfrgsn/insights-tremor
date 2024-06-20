@@ -78,7 +78,7 @@ export default function Users() {
     });
 
     const [value2, setValue2] = useState({
-        from: new Date(2023, 1, 1),
+        from: new Date(2024, 1, 1),
         to: new Date(),
     });
 
@@ -158,7 +158,7 @@ export default function Users() {
             <Grid numItemsMd={3} numItemsLg={3} className="gap-6 mt-4  border-b pb-4">
 
                 <div className='flex items-center'>
-                    <Text className='mr-2 flex-none'>Show Inisghts for</Text>
+                    <Text className='mr-2 flex-none'>Show Insights for</Text>
 
                     <DateRangePicker
                         className="max-w-md mx-auto"
@@ -190,13 +190,13 @@ export default function Users() {
                         <DateRangePickerItem
                             key="half"
                             value="half"
-                            from={new Date(2023, 3, 1)}
-                            to={new Date(2023, 6, 31)}
+                            from={new Date(2024, 3, 1)}
+                            to={new Date(2024, 6, 31)}
                             onClick={() => handleDateInput(totalsQuarterMonth, 'month')}
                         >
                             This Quarter
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="ytd" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput(totalsYearQuarter, 'quarter')}>
+                        <DateRangePickerItem key="ytd" value="ytd" from={new Date(2024, 0, 1)} onClick={() => handleDateInput(totalsYearQuarter, 'quarter')}>
                             Year to date
                         </DateRangePickerItem>
                     </DateRangePicker>
@@ -317,7 +317,7 @@ export default function Users() {
             <Grid numItemsSm={1} numItemsMd={2} numItemsLg={2} className="gap-6 mt-6">
                 <Card className='flex flex-col'>
                     <Flex className="mb-2" alignItems="center">
-                        <Title className="flex w-full">Most Active Groups</Title>
+                        <Title className="flex w-full">Active Groups</Title>
                         <TabGroup index={selectedChart1} className="flex justify-end">
                             <TabList variant="solid">
                                 <Tab>By Number</Tab>
@@ -353,7 +353,7 @@ export default function Users() {
                     </TabGroup>
                 </Card>
                 <Card className='flex flex-col'>
-                    <Title>Most Active Users</Title>
+                    <Title>Active Users</Title>
                     <TabGroup>
                         <TabList className="mt-2">
                             <Tab>Total Views</Tab>

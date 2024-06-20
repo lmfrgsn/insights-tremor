@@ -81,7 +81,7 @@ export default function Overview() {
     });
 
     const [value2, setValue2] = useState({
-        from: new Date(2023, 1, 1),
+        from: new Date(2024, 1, 1),
         to: new Date(),
     });
 
@@ -397,7 +397,7 @@ export default function Overview() {
             <Grid numItemsMd={3} numItemsLg={3} className="gap-6 mt-4  border-b pb-4">
 
                 <div className='flex items-center'>
-                    <Text className='mr-2 flex-none'>Show Inisghts for</Text>
+                    <Text className='mr-2 flex-none'>Show Insights for</Text>
 
                     <DateRangePicker
                         className="max-w-md mx-auto"
@@ -429,13 +429,13 @@ export default function Overview() {
                         <DateRangePickerItem
                             key="half"
                             value="half"
-                            from={new Date(2023, 3, 1)}
-                            to={new Date(2023, 6, 31)}
+                            from={new Date(2024, 3, 1)}
+                            to={new Date(2024, 6, 31)}
                             onClick={() => handleDateInput(totalsQuarterMonth, 'month')}
                         >
                             This Quarter
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="ytd" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput(totalsYearQuarter, 'quarter')}>
+                        <DateRangePickerItem key="ytd" value="ytd" from={new Date(2024, 0, 1)} onClick={() => handleDateInput(totalsYearQuarter, 'quarter')}>
                             Year to date
                         </DateRangePickerItem>
                     </DateRangePicker>
@@ -446,8 +446,8 @@ export default function Overview() {
                     <MultiSelect>
                         <MultiSelectItem value="1">Recognition Posts</MultiSelectItem>
                         <MultiSelectItem value="2">User Generated Content</MultiSelectItem>
-                        {/* <MultiSelectItem value="3">Home Page</MultiSelectItem> */}
-
+                        <MultiSelectItem value="3">Home List</MultiSelectItem>
+                        <MultiSelectItem value="4">All Lists</MultiSelectItem>
                     </MultiSelect>
                 </div>
                 <div className='flex items-center'>
@@ -644,7 +644,15 @@ export default function Overview() {
                         </>)}
                 </Card>
                 <Card>
-                    <Title>Popular Content</Title>
+                    <Flex className="mb-2" alignItems="center">
+                        <Title className="flex w-full">Popular Content</Title>
+                        <MultiSelect placeholder="Exclude..." className="max-w-100">
+                            <MultiSelectItem value="1">Recognition Posts</MultiSelectItem>
+                            <MultiSelectItem value="2">User Generated Content</MultiSelectItem>
+                            <MultiSelectItem value="3">Home List</MultiSelectItem>
+                            <MultiSelectItem value="4">All Lists</MultiSelectItem>
+                        </MultiSelect>
+                    </Flex>
                     {/* <Flex alignItems="center" justifyContent="between">
                     <Text className="text-base text-gray-700 font-medium">Top Pages</Text>
                     <Text className="uppercase">Visitors</Text>
@@ -726,39 +734,10 @@ export default function Overview() {
                 ))}
             </Grid>
 
-            <Grid numItemsSm={2} numItemsLg={2} className="gap-6 mt-6">
-                <Card>
-                    <Title>Popular Lists</Title>
-                    <TabGroup>
-                        <TabList className="mt-2">
-                            <Tab>Views</Tab>
-                            <Tab>Unique Views</Tab>
-                            <Tab>Likes</Tab>
-                            <Tab>Comments</Tab>
-                        </TabList>
-                        <TabPanels>
-                            <TabPanel>
-                                <BarList
-                                    // data={userLoginsDay}
-                                    data={popularContentDay.slice(0, 6)}
-                                    className="mt-8"
-                                    showAnimation={false}
-                                // valueFormatter={valueFormatter}
-                                />
-                                <Button
-                                    icon={ExpandIcon}
-                                    className="mt-4 w-full bg-white border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-gray-300"
-                                // onClick={openModal}
-                                >
-                                    Show More
-                                </Button>
-                            </TabPanel>
-                        </TabPanels>
-                    </TabGroup>
-                </Card>
-                <Card className='flex flex-col'>
+            <Grid numItemsSm={1} numItemsMd={2} numItemsLg={2} className="gap-6 mt-6">
+                <Card className='flex flex-col justify-between'>
                     <Flex className="mb-2" alignItems="center">
-                        <Title className="flex w-full">Most Active Groups</Title>
+                        <Title className="flex w-full">Active Groups</Title>
                         <TabGroup index={selectedChart1} className="flex justify-end">
                             <TabList variant="solid">
                                 <Tab>By Number</Tab>
@@ -793,7 +772,38 @@ export default function Overview() {
                         </TabPanels>
                     </TabGroup>
                 </Card>
+                <Card className='flex flex-col justify-between'>
+                    <Title>Active Users</Title>
+                    <TabGroup>
+                        <TabList className="mt-2">
+                            <Tab>Total Views</Tab>
+                            <Tab>Unique Views</Tab>
+                            <Tab>Likes</Tab>
+                            <Tab>Comments</Tab>
+                        </TabList>
+                        <TabPanels>
+                            <TabPanel>
+                                <BarList
+                                    // data={userLoginsDay}
+                                    data={popularUsers.slice(0, 6)}
+                                    className="mt-8"
+                                    showAnimation={false}
+                                // valueFormatter={valueFormatter}
+                                />
+                                <Button
+                                    icon={ExpandIcon}
+                                    className="mt-4 w-full bg-white border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-gray-300"
+                                // onClick={openModal}
+                                >
+                                    Show More
+                                </Button>
+                            </TabPanel>
+                        </TabPanels>
+                    </TabGroup>
+                </Card>
             </Grid>
+
+
 
             {isModal ? <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={() => setIsModal(!isModal)}></div>
@@ -884,13 +894,13 @@ export default function Overview() {
                                                                     <DateRangePickerItem
                                                                         key="half"
                                                                         value="half"
-                                                                        from={new Date(2023, 3, 1)}
-                                                                        to={new Date(2023, 6, 31)}
+                                                                        from={new Date(2024, 3, 1)}
+                                                                        to={new Date(2024, 6, 31)}
                                                                         onClick={() => handleDateInput(totalsQuarterMonth, 'month')}
                                                                     >
                                                                         This Quarter
                                                                     </DateRangePickerItem>
-                                                                    <DateRangePickerItem key="ytd" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput(totalsYearMonth, 'month')}>
+                                                                    <DateRangePickerItem key="ytd" value="ytd" from={new Date(2024, 0, 1)} onClick={() => handleDateInput(totalsYearMonth, 'month')}>
                                                                         Year to date
                                                                     </DateRangePickerItem>
                                                                 </DateRangePicker>
@@ -928,13 +938,13 @@ export default function Overview() {
                                                                     <DateRangePickerItem
                                                                         key="half2"
                                                                         value="half2"
-                                                                        from={new Date(2023, 3, 1)}
-                                                                        to={new Date(2023, 6, 31)}
+                                                                        from={new Date(2024, 3, 1)}
+                                                                        to={new Date(2024, 6, 31)}
                                                                         onClick={() => handleDateInput2(totalsQuarterMonth, 'month')}
                                                                     >
                                                                         Last Quarter (Q2)
                                                                     </DateRangePickerItem>
-                                                                    <DateRangePickerItem key="ytd2" value="ytd2" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearQuarter, 'quarter')}>
+                                                                    <DateRangePickerItem key="ytd2" value="ytd2" from={new Date(2024, 0, 1)} onClick={() => handleDateInput2(totalsYearQuarter, 'quarter')}>
                                                                         Last Year (2022)
                                                                     </DateRangePickerItem>
                                                                 </DateRangePicker>

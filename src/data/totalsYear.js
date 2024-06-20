@@ -2073,7 +2073,7 @@ export const totalsYearQuarter = [
 
 export const totalsYearYear = [
     {
-        year: "2023",
+        year: "2024",
         "Logged In": getRandomNumber(1, 35000), "Registered": 450, "Published Content": 275, Views: getRandomNumber(1, 35000), Likes: getRandomNumber(1, 22), Comments: getRandomNumber(1, 22), "Content Views": getRandomNumber(1, 22), "Unique Content Views": getRandomNumber(1, 22), "Shared Post Views": getRandomNumber(1, 22), "Recognition Posts": getRandomNumber(1, 22), "User Generated Posts": getRandomNumber(1, 22), "File Downloads": getRandomNumber(1, 22), "Video Plays": getRandomNumber(1, 22), "Audio Plays": getRandomNumber(1, 22), "Competition Posts": getRandomNumber(1, 22), "Event Posts": getRandomNumber(1, 22), "Compliance Posts": getRandomNumber(1, 22), "Planner Events": getRandomNumber(1, 22), "Planner Responses": getRandomNumber(1, 22), "Search Volume": getRandomNumber(1, 22),
     },
 ];

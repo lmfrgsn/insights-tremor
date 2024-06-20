@@ -49,7 +49,7 @@ function App() {
           </TabPanels>
         </TabGroup>
         <div className="my-16 flex justify-center text-sm text-gray-400">
-          <p>© 2023 Thrive.App Ltd.</p>
+          <p>© 2024 Thrive.App Ltd.</p>
           <p className="mx-12">Privacy Policy</p>
           <p>Terms and Conditions</p>
         </div>

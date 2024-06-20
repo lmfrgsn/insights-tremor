@@ -4,7 +4,7 @@ import {
     Card, Text, Metric, AreaChart, Grid, Flex, Bold, SelectItem, Select, DateRangePicker, DateRangePickerItem, Icon, MultiSelect, MultiSelectItem, BadgeDelta, LineChart, Title, BarChart, TabGroup, TabList, Tab
 } from "@tremor/react";
 import { BarChart4Icon, LineChartIcon } from 'lucide-react';
-// import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 // import { ExpandIcon, SearchIcon } from 'lucide-react';
 // import { popularContentDay } from "../data/popularContent";
 // import { userLoginsDay } from "../data/userLogins";
@@ -80,7 +80,7 @@ export default function Compare() {
     });
 
     const [value2, setValue2] = useState({
-        from: new Date(2023, 1, 1),
+        from: new Date(2024, 1, 1),
         to: new Date(),
     });
 
@@ -428,13 +428,13 @@ export default function Compare() {
                         <DateRangePickerItem
                             key="half"
                             value="half"
-                            from={new Date(2023, 3, 1)}
-                            to={new Date(2023, 6, 31)}
+                            from={new Date(2024, 3, 1)}
+                            to={new Date(2024, 6, 31)}
                             onClick={() => handleDateInput(totalsQuarterMonth, 'month')}
                         >
                             This Quarter
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="ytd" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput(totalsYearQuarter, 'quarter')}>
+                        <DateRangePickerItem key="ytd" value="ytd" from={new Date(2024, 0, 1)} onClick={() => handleDateInput(totalsYearQuarter, 'quarter')}>
                             Year to date
                         </DateRangePickerItem>
                     </DateRangePicker>
@@ -475,13 +475,13 @@ export default function Compare() {
                         <DateRangePickerItem
                             key="half2"
                             value="half2"
-                            from={new Date(2023, 3, 1)}
-                            to={new Date(2023, 6, 31)}
+                            from={new Date(2024, 3, 1)}
+                            to={new Date(2024, 6, 31)}
                             onClick={() => handleDateInput2(totalsQuarterMonth, 'month')}
                         >
                             Last Quarter (Q2)
                         </DateRangePickerItem>
-                        <DateRangePickerItem key="ytd2" value="ytd2" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearQuarter, 'quarter')}>
+                        <DateRangePickerItem key="ytd2" value="ytd2" from={new Date(2024, 0, 1)} onClick={() => handleDateInput2(totalsYearQuarter, 'quarter')}>
                             Last Year (2022)
                         </DateRangePickerItem>
                     </DateRangePicker>
@@ -563,7 +563,7 @@ export default function Compare() {
                 <Card className='flex flex-col justify-between'>
                     <Flex className="flex-col align-start items-start">
                         <Flex className="space-x-8 mb-2" justifyContent="between" alignItems="center">
-                            <div class="flex">
+                            <div class="flex w-full">
                                 <Title className="w-full">{displayTotals2Label}</Title>
                             </div>
                             <TabGroup index={selectedChart2} onIndexChange={setSelectedChart2} className="flex justify-end">
@@ -1084,7 +1084,7 @@ export default function Compare() {
                         <Flex alignItems="start">
                             <BadgeDelta deltaType={item.deltaType}>{item.delta}</BadgeDelta>
                             <AreaChart
-                                className="h-7 opacity-30 hover:opacity-100"
+                                className="h-7 opacity-30 hover:opacity-100 overflow-hidden"
                                 data={blocksViewsDay}
                                 index={"hour"}
                                 categories={["This Period", "Previous Period"]}
@@ -1192,13 +1192,13 @@ export default function Compare() {
                                                                     <DateRangePickerItem
                                                                         key="half"
                                                                         value="half"
-                                                                        from={new Date(2023, 3, 1)}
-                                                                        to={new Date(2023, 6, 31)}
+                                                                        from={new Date(2024, 3, 1)}
+                                                                        to={new Date(2024, 6, 31)}
                                                                         onClick={() => handleDateInput(totalsQuarterMonth, 'month')}
                                                                     >
                                                                         This Quarter
                                                                     </DateRangePickerItem>
-                                                                    <DateRangePickerItem key="ytd" value="ytd" from={new Date(2023, 0, 1)} onClick={() => handleDateInput(totalsYearMonth, 'month')}>
+                                                                    <DateRangePickerItem key="ytd" value="ytd" from={new Date(2024, 0, 1)} onClick={() => handleDateInput(totalsYearMonth, 'month')}>
                                                                         Year to date
                                                                     </DateRangePickerItem>
                                                                 </DateRangePicker>
@@ -1236,13 +1236,13 @@ export default function Compare() {
                                                                     <DateRangePickerItem
                                                                         key="half2"
                                                                         value="half2"
-                                                                        from={new Date(2023, 3, 1)}
-                                                                        to={new Date(2023, 6, 31)}
+                                                                        from={new Date(2024, 3, 1)}
+                                                                        to={new Date(2024, 6, 31)}
                                                                         onClick={() => handleDateInput2(totalsQuarterMonth, 'month')}
                                                                     >
                                                                         Last Quarter (Q2)
                                                                     </DateRangePickerItem>
-                                                                    <DateRangePickerItem key="ytd2" value="ytd2" from={new Date(2023, 0, 1)} onClick={() => handleDateInput2(totalsYearQuarter, 'quarter')}>
+                                                                    <DateRangePickerItem key="ytd2" value="ytd2" from={new Date(2024, 0, 1)} onClick={() => handleDateInput2(totalsYearQuarter, 'quarter')}>
                                                                         Last Year (2022)
                                                                     </DateRangePickerItem>
                                                                 </DateRangePicker>
